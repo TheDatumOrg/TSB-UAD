@@ -1,0 +1,14 @@
+name: TSB
+channels:
+- anaconda-fusion
+- defaults
+dependencies:
+- ca-certificates=2022.*
+- certifi=2022.*
+- openssl=1.*
+- pip=22.*
+- python=3.8.*
+- setuptools=61.*
+- sqlite=3.38.*
+- wheel=0.37.*
+

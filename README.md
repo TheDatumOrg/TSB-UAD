@@ -1,4 +1,4 @@
-# TSB-AUD: An End-to-End Anomaly Detection Benchmark Suite for Univariate Time-Series Data
+# TSB-UAD: An End-to-End Anomaly Detection Benchmark Suite for Univariate Time-Series Data
 
 TSB-UAD is a new open, end-to-end benchmark suite to ease the
 evaluation of univariate time-series anomaly detection methods. Overall, TSB-UAD
@@ -17,11 +17,13 @@ time series (92 datasets) with varying difficulty for anomaly detection.
 
 ## Publication
 
-"TSB-UAD: An End-to-End Benchmark Suite for Univariate Time-Series Anomaly Detection"
+If you use TSB-UAD in your project or research, please cite our paper:
 
-John Paparrizos, Yuhao Kang, Ruey S. Tsay, Themis Palpanas, and Michael J. Franklin
+John Paparrizos, Yuhao Kang, Paul Boniol, Ruey S. Tsay, Themis Palpanas,
+and Michael J. Franklin. TSB-UAD: An End-to-End Benchmark Suite for
+Univariate Time-Series Anomaly Detection. PVLDB, 15(8): 1697 - 1711, 2022.
+doi:10.14778/3529337.3529354
 
-under submission/review
 
 ## Datasets
 
@@ -44,27 +46,41 @@ The UCR classification datasets used to generate the Artificial datasets: http:/
 
 ## Installation
 
-This package works with Python 3.8 and pip 21. You need to have the following packages installed on the system.
+The following tools are required to install TSB-UAD from source:
 
+- git
+- conda (anaconda or miniconda)
+
+#### Steps
+
+1. Clone this repository using git and change into its root directory.
+
+```bash
+git clone https://github.com/johnpaparrizos/TSB-UAD-Temp.git
+cd TSB-UAD-Temp/
+```
+
+2. Create and activate a conda-environment 'TSB'.
+
+```bash
+conda env create --file environment.yml
+conda activate TSB
+```
+
+3. Install TSB-UAD using setup.py:
+
+```
+python setup.py install
+```
+   
+4. Install the dependencies from `requirements.txt`:
 ```
 pip install -r requirements.txt
 ```
 
-Clone the repository
 
-```
-git clone https://github.com/yuhao12345/TSB-AD.git
-```
-
-Install locally
-
-```
-cd TSB-AD-main
-pip install .
-```
-
-## Examples
-* test_anomaly_detectors.ipynb : The performance of 10 popular anomaly detectors. 
+## Usage
+* test_anomaly_detectors.ipynb : The performance of 11 popular anomaly detectors. 
 * test_artificialConstruction.ipynb: The synthesized dataset based on anomaly construction. 
 * test_transformer.ipynb: The effects of 11 transformations.
 ## Benchmark 
@@ -83,7 +99,7 @@ In ./data contains four folders:
 <img width="500" src="./result/transform_local.png"/>
 
 ## Anomaly Detector
-We test ten algorithms in the module.
+We test eleven algorithms in the module.
 
 Below shows a result based on Autoencoder.
 
@@ -93,3 +109,7 @@ The right panel shows the ROC curve. AUC represents the area under the ROC curve
 
 <img width="500" src="./result/AE.png"/>
 
+## AUC result table
+auc_public.csv shows the AUC result of 18 datasets in public.zip. There are 2 versions of NASA_MSL and NASA_SMAP. The 1st version gives the complete time series, while the 2nd version gives seperate training data and testing data. OCSVM, AE, CNN and LSTM are trained based on the clean traning data in version 2. For the rest of models, we measure their performance based on version 1.
+
+auc_artificial.csv shows the performance of IForest,MP,NORMA,PCA and POLY on the 958 artificial time series. fileIndex indicates the index of used dataset in the UCR classification datasets. K is the number of anomalous segments. anoR is the ratio of anomalous segments. seed is the random seed used in code. The definition of cr/nc/na can be found in the paper.
