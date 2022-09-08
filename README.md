@@ -56,8 +56,8 @@ The following tools are required to install TSB-UAD from source:
 1. Clone this repository using git and change into its root directory.
 
 ```bash
-git clone https://github.com/johnpaparrizos/TSB-UAD-Temp.git
-cd TSB-UAD-Temp/
+git clone https://github.com/johnpaparrizos/TSB-UAD.git
+cd TSB-UAD/
 ```
 
 2. Create and activate a conda-environment 'TSB'.
@@ -108,8 +108,3 @@ For each output figure, the left panel shows the real time series with outliers 
 The right panel shows the ROC curve. AUC represents the area under the ROC curve. Larger AUC indicates better performance.
 
 <img width="500" src="./result/AE.png"/>
-
-## AUC result table
-auc_public.csv shows the AUC result of 18 datasets in public.zip. There are 2 versions of NASA_MSL and NASA_SMAP. The 1st version gives the complete time series, while the 2nd version gives seperate training data and testing data. OCSVM, AE, CNN and LSTM are trained based on the clean traning data in version 2. For the rest of models, we measure their performance based on version 1.
-
-auc_artificial.csv shows the performance of IForest,MP,NORMA,PCA and POLY on the 958 artificial time series. fileIndex indicates the index of used dataset in the UCR classification datasets. K is the number of anomalous segments. anoR is the ratio of anomalous segments. seed is the random seed used in code. The definition of cr/nc/na can be found in the paper.
