@@ -87,7 +87,7 @@ pip install -r requirements.txt
 In ./data contains four folders: 
 
 * benchmark/ contains ten public datasets. Below shows some typical outliers in these ten datasets.
-<img width="1000" src="./doc/display_data.png"/>
+<img width="1000" src="./doc/display_data.jpg"/>
 
 * UCR2018-NEW/ contains 128 subfolders 
 
