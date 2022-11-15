@@ -17,10 +17,11 @@ time series (92 datasets) with varying difficulty for anomaly detection.
 
 ## Publication
 
-If you use VUS in your project or research, cite the following two papers:
+You may find more details about the TSB-UAD benchmark in the following paper:
 
-* [VLDB 2022a](https://www.paparrizos.org/papers/PaparrizosVLDB22a.pdf)
 * [VLDB 2022b](https://www.paparrizos.org/papers/PaparrizosVLDB22b.pdf)
+
+If you use TSB-UAD in your project or research, cite the following paper:
 
 ### References
 
@@ -152,6 +153,7 @@ The following table summarizes different characteristics of the datasets.
 |SMD        | 281   |	25562.3        |	10.4                        |	900.2                             |
 |SVDB       | 115   |	230400.0       |	208.0                       |	27144.5                           |
 
+You may find more details (and the references) in our [paper](https://www.paparrizos.org/papers/PaparrizosVLDB22b.pdf).
 
 ### Benchmark: Synthetic and Artificial Datasets 
 
@@ -165,17 +167,24 @@ We also include synthetic and artifical datasets. We construct and transformed d
 <img width="500" src="./result/transform_local.png"/>
 
 ## Anomaly Detector
-We test eleven algorithms in the module.
 
-Below shows a result based on Autoencoder.
+We use 11 anomaly detection methods proposed for univariate time series. the following table lists and describes the methods considered in our benchmark:
 
-For each output figure, the left panel shows the real time series with outliers (red), anomaly score obtained by each anomaly detector, and the correpsonding TP/FP/TN/FN classification.
+| Anomaly Detection Method    | Description|
+|:--|:---------:|
+|Isolation Forest (IForest) | This method constructs the binary tree based on the space splitting and the nodes with shorter path lengths to the root are more likely to be anomalies. |
+|The Local Outlier Factor (LOF)| This method computes the ratio of the neighboring density to the local density. |
+|The Histogram-based Outlier Score (HBOS)| This method constructs a histogram for the data and the inverse of the height of the bin is used as the outlier score of the data point. |
+|Matrix Profile (MP)| This method calculates as anomaly the subsequence with the most significant 1-NN distance. |
+|NORMA| This method identifies the normal pattern based on clustering and calculates each point's effective distance to the normal pattern. |
+|Principal Component Analysis (PCA)| This method projects data to a lower-dimensional hyperplane, and data points with a significant distance from this plane can be identified as outliers. |
+|Autoencoder (AE)|This method projects data to the lower-dimensional latent space and reconstructs the data, and outliers are expected to have more evident reconstruction deviation. |
+|LSTM-AD| This method build a non-linear relationship between current and previous time series (using Long-Short-Term-Memory cells), and the outliers are detected by the deviation between the predicted and actual values. |
+|Polynomial Approximation (POLY)| This method build a non-linear relationship between current and previous time series (using polynomial decomposition), and the outliers are detected by the deviation between the predicted and actual values. |
+| CNN | This method build a non-linear relationship between current and previous time series (using convolutional Neural Network), and the outliers are detected by the deviation between the predicted and actual values. |
+|One-class Support Vector Machines (OCSVM)| This method fits the dataset to find the normal data's boundary. |
 
-The right panel shows the ROC curve. AUC represents the area under the ROC curve. Larger AUC indicates better performance.
-
-<img width="500" src="./result/AE.png"/>
-
-
+You may find more details (and the references) in our [paper](https://www.paparrizos.org/papers/PaparrizosVLDB22b.pdf).
 
 ## Usage
 * test_anomaly_detectors.ipynb : The performance of 11 popular anomaly detectors. 
