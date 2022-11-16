@@ -83,18 +83,17 @@ cd TSB-UAD/
 conda env create --file environment.yml
 conda activate TSB
 ```
-
-4. Install TSB-UAD using setup.py:
-
-```
-python setup.py install
-```
    
-5. Install the dependencies from `requirements.txt`:
+4. Install the dependencies from `requirements.txt`:
 ```
 pip install -r requirements.txt
 ```
 
+5. Install TSB-UAD:
+
+```
+pip install .
+```
 
 ## Benchmark 
 
