@@ -5,12 +5,12 @@ from TSB_AD.utils.slidingWindows import find_length
 import argparse
 
 # =============================================================================
-# kind==6: trans_name='_flat_region'
-# kind==7: trans_name='flip_segment'
-# kind==9: trans_name='_change_segment_add_scale'
-# kind==10:trans_name='_change_segment_normalization'
-# kind==11: trans_name='_change_segment_partial'
-# kind==12: trans_name='_change_segment_resampling'
+# --transformType 6: trans_name='_flat_region'
+# --transformType 7: trans_name='flip_segment'
+# --transformType 9: trans_name='_change_segment_add_scale'
+# --transformType 10:trans_name='_change_segment_normalization'
+# --transformType 11: trans_name='_change_segment_partial'
+# --transformType 12: trans_name='_change_segment_resampling'
 # =============================================================================
 
 
@@ -40,7 +40,7 @@ parser.add_argument('--seed', type=int, required=True)
 # Parse the argument
 args = parser.parse_args()
 
-# python generate_transformed_data.py --original_file_path ../data/benchmark/ECG/MBA_ECG805_data.out --output_file ../data/synthetic/MBA_ECG805_data_12.out --transformType 12 --contamination 0.2 --para 3 --seed 15
+# python generate_transformed_data.py --original_file_path ../../data/benchmark/ECG/MBA_ECG805_data.out --output_file ../data/synthetic/MBA_ECG805_data_12.out --transformType 12 --contamination 0.2 --para 3 --seed 15
 if __name__ == "__main__":
     main(args.original_file_path, args.output_file, args.transformType,
          args.contamination, args.para, args.seed)

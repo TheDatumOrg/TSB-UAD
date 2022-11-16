@@ -6,7 +6,7 @@ import argparse
 
 def main(name, K, anomalyRatio, seed):
     
-    data_path = '../data/UCR2018-NEW/'+name+'/'+name+'_TRAIN'
+    data_path = '../../data/UCR2018-NEW/'+name+'/'+name+'_TRAIN'
     data_train = np.loadtxt(data_path, delimiter=',')
     X_train_raw = data_train[:,1:]
     y_train_raw = data_train[:,0].astype(int)
