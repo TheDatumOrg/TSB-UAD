@@ -218,7 +218,11 @@ We then compare the accuracy scores of the anoamly detection methods on time ser
 
 <img width="1000" src="./doc/figures_results/all_results.jpg"/>
 
-You may find more details (and the references) in our [paper](https://www.paparrizos.org/papers/PaparrizosVLDB22b.pdf).
+This figure and many others comparisons are described (and reproductible) in [this notebook](https://github.com/TheDatumOrg/TSB-UAD/blob/main/result/accuracy_evaluation/Statistical_Analysis_TSB.ipynb), summarized in [this document](https://github.com/TheDatumOrg/TSB-UAD/blob/main/result/accuracy_evaluation/Statistical_Analysis_TSB.pdf).
+The scripts to reproduce the critical diagrams and the statistical tests are [here](https://github.com/TheDatumOrg/TSB-UAD/tree/main/result/statistical_test).
+
+
+
 
 ## Usage
 * test_anomaly_detectors.ipynb : The performance of 11 popular anomaly detectors. 
