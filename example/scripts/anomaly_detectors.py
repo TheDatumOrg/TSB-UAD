@@ -44,6 +44,6 @@ score = np.array([score[0]]*math.ceil((slidingWindow-1)/2) + list(score) + [scor
 
 # save result as figure
 plotFig(data, label, score, slidingWindow, fileName=name, modelName=modelName)
-plt.savefig('../result/'+modelName+'.png')
+plt.savefig(modelName+'.png')
 plt.close()
 

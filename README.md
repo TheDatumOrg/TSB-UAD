@@ -303,13 +303,14 @@ Accuracy Measures:
 - RF		=0.667
 ```
 
-You may find more details on how to run each anomaly detection method in this [notebook](https://github.com/TheDatumOrg/TSB-UAD/blob/main/example/notebooks/test_anomaly_detectors.ipynb).
+You may find more details on how to run each anomaly detection method in this [notebook](https://github.com/TheDatumOrg/TSB-UAD/blob/main/example/notebooks/test_anomaly_detectors.ipynb) and this [script](https://github.com/TheDatumOrg/TSB-UAD/blob/main/example/scripts/anomaly_detectors.py).
 
 
 ### Build Artifical Dataset
 
-* test_artificialConstruction.ipynb: The synthesized dataset based on anomaly construction. 
+You may find details and examples on how to create artifical datasets in this [notebook](https://github.com/TheDatumOrg/TSB-UAD/blob/main/example/notebooks/test_artificialConstruction.ipynb) and this [script](https://github.com/TheDatumOrg/TSB-UAD/blob/main/example/scripts/generate_artificial_dataset.py)
+
 
 ### Apply Transformations to a Dataset
 
-* test_transformer.ipynb: The effects of 11 transformations.
+You may find details and examples on how to apply transformations on a dataset in this [notebook](https://github.com/TheDatumOrg/TSB-UAD/blob/main/example/notebooks/test_transformer.ipynb) and this [script](https://github.com/TheDatumOrg/TSB-UAD/blob/main/example/scripts/generate_transformed_data.py)
