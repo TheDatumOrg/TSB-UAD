@@ -212,7 +212,7 @@ We report in the following table the average AUC-ROC and F score for each method
 | SMD         | 0.85          | 0.35 | 0.73          | 0.25 | 0.69          | 0.18 | 0.51          | 0.03 | 0.80 | 0.31 | 0.61          | 0.03 | 0.77          | 0.31 | **0.87** | 0.41 | 0.61 | 0.11 | 0.63 | 0.09 | 0.61          | 0.08 | 0.58 | 0.07 |
 | SVDB        | 0.72          | 0.19 | 0.58          | 0.08 | 0.59          | 0.14 | 0.74          | 0.17 | 0.68 | 0.19 | **0.92** | 0.33 | 0.71          | 0.15 | 0.67          | 0.18 | 0.68 | 0.15 | 0.79 | 0.18 | 0.58          | 0.07 | 0.55 | 0.06 |
 
-Here we only report the average accuracy (AUC-ROC and F score) for each dataset. You may find [here](https://github.com/TheDatumOrg/TSB-UAD/tree/main/result/accuracy_table) the accuracy tables for each time series and each accuracy measures.
+Here we only report the average accuracy (AUC-ROC and F score) for each dataset. You may find [here](https://github.com/TheDatumOrg/TSB-UAD/tree/main/result/accuracy_table) the accuracy tables for each time series and each accuracy measure.
 
 We then compare the accuracy scores of the anoamly detection methods on time series containing point versus sequence anomalies and a single versus multiple anomalies. The following figure summarize the results:
 
