@@ -2,12 +2,12 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 import pandas as pd
-from TSB_AD.models.distance import Fourier
-from TSB_AD.models.feature import Window
-from TSB_AD.utils.slidingWindows import find_length,plotFig, printResult
+from TSB_UAD.models.distance import Fourier
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length,plotFig, printResult
 from sklearn.preprocessing import MinMaxScaler
 
-from TSB_AD.models.iforest import IForest
+from TSB_UAD.models.iforest import IForest
 
 # Data Preprocessing
 

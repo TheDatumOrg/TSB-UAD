@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from TSB_AD.transformer.artificialConstruction import construct_sbd_matrix,clustering_mst,construct_anomaly
+from TSB_UAD.transformer.artificialConstruction import construct_sbd_matrix,clustering_mst,construct_anomaly
 import argparse
 
 

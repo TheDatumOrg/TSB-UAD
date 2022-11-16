@@ -225,6 +225,91 @@ The scripts to reproduce the critical diagrams and the statistical tests are [he
 
 
 ## Usage
-* test_anomaly_detectors.ipynb : The performance of 11 popular anomaly detectors. 
+
+### Anomaly Detector
+
+We depicts below a code snippet demonstrating how to use one anomaly detector (in this example, IForest).
+
+```python
+import numpy as np
+import math
+import pandas as pd
+from TSB_UAD.models.distance import Fourier
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.utils.metrics import metricor
+from sklearn.preprocessing import MinMaxScaler
+
+from TSB_UAD.models.iforest import IForest
+
+# We load the data series
+filepath = 'data/benchmark/ECG/MBA_ECG805_data.out'
+df = pd.read_csv(filepath, header=None).to_numpy()
+name = filepath.split('/')[-1]
+max_length = 10000
+data = df[:max_length,0].astype(float)
+label = df[:max_length,1]
+
+# We preprocess the data series for IForest
+slidingWindow = find_length(data)
+X_data = Window(window = slidingWindow).convert(data).to_numpy()
+
+
+# Training and execution of the model
+modelName='IForest'
+clf = IForest(n_jobs=1)
+clf.fit(X_data)
+score = clf.decision_scores_
+
+# Post processing
+score = MinMaxScaler(feature_range=(0,1)).fit_transform(score.reshape(-1,1)).ravel()
+score = np.array([score[0]]*math.ceil((slidingWindow-1)/2) + list(score) + [score[-1]]*((slidingWindow-1)//2))
+
+
+# Computation of the accuracy scores
+grader = metricor()
+    
+R_AUC, R_AP, R_fpr, R_tpr, R_prec = grader.RangeAUC(labels=label, score=score, window=slidingWindow, plot_ROC=True)
+    
+AUC_ROC, Precision, Recall, F, Rrecall, ExistenceReward, OverlapReward, Rprecision, RF, Precision_at_k = grader.metric_new(label, score, plot_ROC=False)
+_, _, AUC_PR = grader.metric_PR(label, score)
+
+
+print('slidingWindow='      +str(slidingWindow) + "\nAccuracy Measures: \n"
+    + '\n- AUC_ROC\t='      +str(round(AUC_ROC,3))
+    + '\n- AUC_PR\t='       +str(round(AUC_PR,3))
+    + '\n- Precision\t='    +str(round(Precision,3))
+    + '\n- Recall\t='       +str(round(Recall,3))
+    + '\n- F\t\t='            +str(round(F,3))
+    + '\n- Precision@k\t='  +str(round(Precision_at_k,3))
+    + '\n- Rprecision\t='   +str(round(Rprecision,3))
+    + '\n- Rrecall\t='      +str(round(Rrecall,3))
+    + '\n- RF\t\t='           +str(round(RF,3))
+    )
+```
+
+```
+slidingWindow=99
+Accuracy Measures: 
+
+- AUC_ROC	=0.984
+- AUC_PR	=0.688
+- Precision	=0.752
+- Recall	=0.759
+- F		=0.755
+- Precision@k	=0.759
+- Rprecision	=0.568
+- Rrecall	=0.807
+- RF		=0.667
+```
+
+You may find more details on how to run each anomaly detection method in this [notebook](https://github.com/TheDatumOrg/TSB-UAD/blob/main/example/notebooks/test_anomaly_detectors.ipynb).
+
+
+### Build Artifical Dataset
+
 * test_artificialConstruction.ipynb: The synthesized dataset based on anomaly construction. 
+
+### Apply Transformations to a Dataset
+
 * test_transformer.ipynb: The effects of 11 transformations.

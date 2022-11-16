@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from TSB_AD.transformer.transformer import transform
-from TSB_AD.utils.slidingWindows import find_length
+from TSB_UAD.transformer.transformer import transform
+from TSB_UAD.utils.slidingWindows import find_length
 import argparse
 
 # =============================================================================
