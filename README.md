@@ -1,4 +1,4 @@
-# TSB-UAD: An End-to-End Anomaly Detection Benchmark Suite for Univariate Time-Series Data
+# TSB-UAD: An End-to-End Benchmark Suite for Univariate Time-Series Anomaly Detection
 
 TSB-UAD is a new open, end-to-end benchmark suite to ease the
 evaluation of univariate time-series anomaly detection methods. Overall, TSB-UAD
@@ -15,13 +15,10 @@ addition, we present a set of data transformations with which we
 introduce new anomalies in the public datasets, resulting in 10828
 time series (92 datasets) with varying difficulty for anomaly detection.
 
-## Publication
+If you use TSB-UAD in your project or research, cite the following two papers:
 
-You may find more details about the TSB-UAD benchmark in the following paper:
-
+* [VLDB 2022a](https://www.paparrizos.org/papers/PaparrizosVLDB22a.pdf)
 * [VLDB 2022b](https://www.paparrizos.org/papers/PaparrizosVLDB22b.pdf)
-
-If you use TSB-UAD in your project or research, cite the following paper:
 
 ### References
 
@@ -40,6 +37,24 @@ If you use TSB-UAD in your project or research, cite the following paper:
   year={2022},
   publisher={VLDB Endowment}
 }
+```
+
+> "Volume Under the Surface: A New Accuracy Evaluation Measure for Time-Series Anomaly Detection"<br/>
+> John Paparrizos, Paul Boniol, Themis Palpanas, Ruey Tsay, Aaron Elmore, and Michael Franklin<br/>
+> Proceedings of the VLDB Endowment (**PVLDB 2022**) Journal, Volume 15, pages 2774‑2787<br/>
+
+```bibtex
+@article{paparrizos2022volume,
+  title={{Volume Under the Surface: A New Accuracy Evaluation Measure for Time-Series Anomaly Detection}},
+  author={Paparrizos, John and Boniol, Paul and Palpanas, Themis and Tsay, Ruey S and Elmore, Aaron and Franklin, Michael J},
+  journal={Proceedings of the VLDB Endowment},
+  volume={15},
+  number={11},
+  pages={2774--2787},
+  year={2022},
+  publisher={VLDB Endowment}
+}
+
 ```
 
 ## Contributors
@@ -62,13 +77,13 @@ The following tools are required to install TSB-UAD from source:
 
 1. First, due to limitations in the upload size on GitHub, we host the datasets at a different location. Please download the datasets using the following links:
 
-- - Public: http://chaos.cs.uchicago.edu/tsb-uad/public.zip
+- Public: https://www.thedatum.org/datasets/TSB-UAD-Public.zip
 
-- - Synthetic: http://chaos.cs.uchicago.edu/tsb-uad/synthetic.zip
+- Synthetic: https://www.thedatum.org/datasets/TSB-UAD-Synthetic.zip
 
-- - Artificial: http://chaos.cs.uchicago.edu/tsb-uad/artificial.zip
+- Artificial: https://www.thedatum.org/datasets/TSB-UAD-Artificial.zip
 
-- - The UCR classification datasets used to generate the Artificial datasets: http://chaos.cs.uchicago.edu/tsb-uad/UCR2018-NEW.zip
+- - The UCR classification datasets used to generate the Artificial datasets: https://www.thedatum.org/datasets/UCR2022_DATASETS.zip
 
 2. Clone this repository using git and change into its root directory.
 
@@ -97,7 +112,7 @@ pip install .
 
 ## Benchmark 
 
-All are datasets and time series are stored in ./data. We describe below the diferenrt types of datasets used in our benchmark.
+All are datasets and time series are stored in ./data. We describe below the different types of datasets used in our benchmark.
 
 ### Benchmark: Public Real Datasets 
 
@@ -152,7 +167,7 @@ The following table summarizes different characteristics of the datasets.
 |SMD        | 281   |	25562.3        |	10.4                        |	900.2                             |
 |SVDB       | 115   |	230400.0       |	208.0                       |	27144.5                           |
 
-You may find more details (and the references) in our [paper](https://www.paparrizos.org/papers/PaparrizosVLDB22b.pdf).
+You may find more details (and the references) in our [paper](https://www.paparrizos.org/papers/PaparrizosVLDB22a.pdf).
 
 ### Benchmark: Synthetic and Artificial Datasets 
 
