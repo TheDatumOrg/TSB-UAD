@@ -182,7 +182,7 @@ We also include synthetic and artifical datasets. We construct and transformed d
 
 ## Anomaly Detectors
 
-We use 11 anomaly detection methods proposed for univariate time series. the following table lists and describes the methods considered in our benchmark:
+We use 13 anomaly detection methods proposed for univariate time series. the following table lists and describes the methods considered in our benchmark:
 
 | Anomaly Detection Method    | Description|
 |:--|:---------:|
