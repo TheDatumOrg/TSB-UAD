@@ -153,7 +153,6 @@ class SAND():
 		join = np.array(join)/np.sum(all_activated_weighted)
 		join = self._running_mean(join,self.pattern_length)
 		join = [join[0]]*(self.pattern_length-1) + list(join)
-
 		
 		self.nm_current_weight = all_activated_weighted
 		if self.mean == -1:
@@ -162,6 +161,8 @@ class SAND():
 		else:
 			self.mean = (1-self.alpha)*self.mean + self.alpha*np.mean(join)
 			self.std = (1-self.alpha)*self.std + self.alpha*np.std(join)
+
+		join = list((np.array(join) - self.mean)/self.std)
 		
 
 		return join
