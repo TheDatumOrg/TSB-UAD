@@ -38,7 +38,7 @@ setup(
         "scipy==1.7.3",
         "statsmodels==0.13.2",
         "tsfresh==0.8.1",
-        "tslearn==0.5.1.0",
+        "tslearn==0.4.1",
         "tensorboard==2.9.1",
         "tensorboard-data-server==0.6.1",
         "tensorboard-plugin-wit==1.8.1",
