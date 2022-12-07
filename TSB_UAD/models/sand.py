@@ -144,6 +144,7 @@ class SAND():
 			if self.nm_current_weight[index_name]> 0:
 				join = stumpy.stump(ts,self.pattern_length,self.clusters[index_name][0],ignore_trivial = False)[:,0]
 				join = np.array(join)
+				join = np.nan_to_num(join)
 				all_join.append(join)
 
 		join = [0]*len(all_join[0])
@@ -168,10 +169,11 @@ class SAND():
 			self.mean = (1-self.alpha)*self.mean + self.alpha*np.mean(join)
 			self.std = (1-self.alpha)*self.std + self.alpha*np.std(join)
 
-		join = list((np.array(join) - self.mean)/self.std)
+		join = (np.array(join) - self.mean)/self.std
 		
 
-		return join
+
+		return list(np.nan_to_num(join))
 
 
 	# MAIN METHODS:
