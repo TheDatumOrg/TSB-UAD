@@ -309,9 +309,7 @@ class SAND():
 		Frequency = []
 		Centrality = []
 		Time_decay = []
-		all_nm = []
 		for i,nm in enumerate(self.clusters):
-			all_nm.append(nm[0])
 			Frequency.append(float(len(nm[1])))
 			Time_decay.append(float(self.current_time)-float(nm[1][-1]))
 			dist_nms = 0
@@ -320,8 +318,8 @@ class SAND():
 					dist_nms += self._sbd(nm[0],nm_t[0])[0]
 			Centrality.append(dist_nms)
 			
-		Frequency = list((np.array(Frequency) - min(Frequency))/(max(Frequency) - min(Frequency))+1)
-		Centrality = list((np.array(Centrality) - min(Centrality))/(max(Centrality) - min(Centrality))+1)
+		Frequency = list((np.array(Frequency) - min(Frequency))/(max(Frequency) - min(Frequency)+0.0000001)+1)
+		Centrality = list((np.array(Centrality) - min(Centrality))/(max(Centrality) - min(Centrality)+0.0000001)+1)
 		
 		weights = []
 		for f,c,t in zip(Frequency,Centrality,Time_decay):
