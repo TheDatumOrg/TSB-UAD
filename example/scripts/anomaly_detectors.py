@@ -12,7 +12,7 @@ from TSB_UAD.models.iforest import IForest
 # Data Preprocessing
 
 filepath = '../../data/benchmark/ECG/MBA_ECG805_data.out'
-df = pd.read_csv(filepath, header=None).to_numpy()
+df = pd.read_csv(filepath, header=None).dropna().to_numpy()
 
 name = filepath.split('/')[-1]
 max_length = 10000
