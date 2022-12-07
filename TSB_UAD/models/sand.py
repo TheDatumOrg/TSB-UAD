@@ -101,14 +101,20 @@ class SAND():
 			self._set_normal_model()
 			self.decision_scores_ = self._run(self.ts[:min(len(self.ts),self.current_time)])
 
-			while self.current_time < len(self.ts):
+			while self.current_time < len(self.ts)-self.subsequence_length:
 
 				if verbose:
 					print(self.current_time,end='-->')
 
 				self._run_next_batch()
 				self._set_normal_model()
-				self.decision_scores_ += self._run(self.ts[self.current_time-self.batch_size:min(len(self.ts),self.current_time)])
+				if self.current_time < len(self.ts)-self.subsequence_length:
+					self.decision_scores_ += self._run(self.ts[self.current_time-self.batch_size:min(len(self.ts),self.current_time)])
+				else:
+					self.decision_scores_ += self._run(self.ts[self.current_time-self.batch_size:])
+
+
+
 
 			if verbose:
 				print("[STOP]: score length {}".format(len(self.decision_scores_)))
