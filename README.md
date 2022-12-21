@@ -258,6 +258,7 @@ The scripts to reproduce the critical diagrams and the statistical tests are [he
 We depicts below a code snippet demonstrating how to use one anomaly detector (in this example, IForest).
 
 ```python
+import os
 import pandas as pd
 from TSB_UAD.core import tsb_uad
 
@@ -265,7 +266,15 @@ from TSB_UAD.core import tsb_uad
 df = pd.read_csv('data/benchmark/ECG/MBA_ECG805_data.out', header=None).to_numpy()
 data = df[:, 0].astype(float)
 label = df[:, 1]
-tsb_uad(data, label, 'IForest', slidingWindow=None, metric='all') # Default slidingWindow=None and metric='all'
+results = tsb_uad(data, label, 'IForest', metric='all')
+
+metrics = {}
+for metric in results.keys():
+    metrics[metric] = [results[metric]]
+    print(metric, ':', results[metric])
+
+df = pd.DataFrame(data=metrics)
+df.to_csv(os.path.join('./all_metrics.csv'))
 ```
 
 ```
