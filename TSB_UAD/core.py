@@ -70,6 +70,8 @@ def tsb_uad(data, label, model, slidingWindow=None, metric='all'):
         x = X_data
         clf.fit(x)
         score = clf.decision_scores_
+        score = MinMaxScaler(feature_range=(0,1)).fit_transform(score.reshape(-1,1)).ravel()
+        score = np.array([score[0]]*math.ceil((slidingWindow-1)/2) + list(score) + [score[-1]]*((slidingWindow-1)//2))
 
     elif model == 'MatrixProfile':
         from TSB_UAD.models.matrix_profile import MatrixProfile
@@ -83,6 +85,8 @@ def tsb_uad(data, label, model, slidingWindow=None, metric='all'):
         x = data
         clf.fit(x)
         score = clf.decision_scores_
+        score = MinMaxScaler(feature_range=(0,1)).fit_transform(score.reshape(-1,1)).ravel()
+        score = np.array([score[0]]*math.ceil((slidingWindow-1)/2) + list(score) + [score[-1]]*((slidingWindow-1)//2))
 
     elif model == 'NORMA':
         from TSB_UAD.models.norma import NORMA
@@ -96,7 +100,9 @@ def tsb_uad(data, label, model, slidingWindow=None, metric='all'):
         x = data
         clf.fit(x)
         score = clf.decision_scores_
-
+        score = MinMaxScaler(feature_range=(0,1)).fit_transform(score.reshape(-1,1)).ravel()
+        score = np.array([score[0]]*((slidingWindow-1)//2) + list(score) + [score[-1]]*((slidingWindow-1)//2))
+        
     elif model == 'PCA':
         from TSB_UAD.models.pca import PCA
 
@@ -110,6 +116,8 @@ def tsb_uad(data, label, model, slidingWindow=None, metric='all'):
         x = X_data
         clf.fit(x)
         score = clf.decision_scores_
+        score = MinMaxScaler(feature_range=(0,1)).fit_transform(score.reshape(-1,1)).ravel()
+        score = np.array([score[0]]*math.ceil((slidingWindow-1)/2) + list(score) + [score[-1]]*((slidingWindow-1)//2))
 
     elif model == 'POLY':
         from TSB_UAD.models.poly import POLY
