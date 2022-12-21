@@ -218,12 +218,5 @@ def tsb_uad(data, label, model, slidingWindow=None, metric='all'):
 
 
     results = get_metrics(score, label, metric=metric, slidingWindow=slidingWindow)
-
-    metrics = {}
-    for metric in results.keys():
-        metrics[metric] = [results[metric]]
-        print(metric, ':', results[metric])
-
-    df = pd.DataFrame(data=metrics)
-    df.to_csv(os.path.join('./all_metrics.csv'))
+    return results
 
