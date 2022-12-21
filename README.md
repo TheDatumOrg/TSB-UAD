@@ -265,7 +265,7 @@ from TSB_UAD.core import tsb_uad
 df = pd.read_csv('data/benchmark/ECG/MBA_ECG805_data.out', header=None).to_numpy()
 data = df[:, 0].astype(float)
 label = df[:, 1]
-tsb_uad(data, label, 'IForest', slidingWindow=None, metric='all') $ Default slidingWindow=None and metric='all'
+tsb_uad(data, label, 'IForest', slidingWindow=None, metric='all') # Default slidingWindow=None and metric='all'
 ```
 
 ```
