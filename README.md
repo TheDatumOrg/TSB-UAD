@@ -57,6 +57,10 @@ If you use TSB-UAD in your project or research, cite the following two papers:
 
 ```
 
+> "Local Evaluation of Time Series Anomaly Detection Algorithms", 
+> Accepted in KDD 2022 Research Track: Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining.
+>  [Affiliation Metrics](https://github.com/ahstat/affiliation-metrics-py)
+
 ## Contributors
 
 * John Paparrizos (University of Chicago)
