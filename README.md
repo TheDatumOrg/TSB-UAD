@@ -1,4 +1,7 @@
-# TSB-UAD: An End-to-End Benchmark Suite for Univariate Time-Series Anomaly Detection
+
+<h1 align="center">TSB-UAD</h1>
+<h2 align="center">An End-to-End Benchmark Suite for Univariate Time-Series Anomaly Detection</h2>
+
 
 TSB-UAD is a new open, end-to-end benchmark suite to ease the
 evaluation of univariate time-series anomaly detection methods. Overall, TSB-UAD
