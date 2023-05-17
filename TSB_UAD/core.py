@@ -57,6 +57,24 @@ def tsb_uad(data, label, model, slidingWindow=None, metric='all'):
         score = clf.decision_scores_
         score = MinMaxScaler(feature_range=(0,1)).fit_transform(score.reshape(-1,1)).ravel()
 
+    elif model == 'Series2Graph':
+        from TSB_UAD.models.series2graph import Series2Graph
+        
+        if slidingWindow:
+            slidingWindow = slidingWindow
+        else:
+            slidingWindow = find_length(data)
+
+        print("slidingWindow: ", slidingWindow)
+        s2g = Series2Graph(pattern_length=slidingWindow)
+        s2g.fit(data)
+        query_length = 2*slidingWindow
+        s2g.score(query_length=query_length,dataset=data)
+
+        score = s2g.decision_scores_
+        score = np.array([score[0]]*math.ceil(query_length//2) + list(score) + [score[-1]]*(query_length//2))
+        score = MinMaxScaler(feature_range=(0,1)).fit_transform(score.reshape(-1,1)).ravel()
+
     elif model == 'LOF':
         from TSB_UAD.models.lof import LOF
 
