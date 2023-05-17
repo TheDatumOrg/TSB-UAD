@@ -215,6 +215,7 @@ We use 13 anomaly detection methods proposed for univariate time series. the fol
 |One-class Support Vector Machines (OCSVM)| This method fits the dataset to find the normal data's boundary. |
 |*Discord Aware Matrix Profile (DAMP)*| *This method is a scalable matrix Profile-based approach proposed to solves the twin-freak problem.* |
 |*SAND*| *This method identifies the normal pattern based on clustering updated through arriving batches (i.e., subsequences) and calculates each point's effective distance to the normal pattern. This method can be used either online and offline.* |
+|*Series2Graph*| *This method is converting the time series into a directed graph reprenting the evolution of subsequences in time. The anomalies are detected using the weight and the degree of the nodes and edges respectively.* |
 
 You may find more details (and the references) in our [paper](https://www.paparrizos.org/papers/PaparrizosVLDB22b.pdf). In italics are methods that are available but not evaluated yet.
 
