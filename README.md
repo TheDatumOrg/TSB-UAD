@@ -158,7 +158,7 @@ The following table summarizes different characteristics of the datasets.
 | Dataset    | Count |	Average length |	Average number of anomalies |	Average number of abnormal points |
 |:--|:---------:|:-------:|:--------:|:-------:|
 |Dodger     | 1     |	50400.0        |	133.0                       |	5612                              |
-|ECG        | 52    |	230351.9       |	195.6                       |	15634                             |
+|ECG        | 53    |	230351.9       |	195.6                       |	15634                             |
 |IOPS       | 58    |	102119.2       |	46.5                        |	2312.3                            |
 |KDD21      | 250   |	77415.06       |	1.0                         |	196.5                             |
 |MGAB       | 10    |	100000.0       |	10.0                        |	200.0                             |
