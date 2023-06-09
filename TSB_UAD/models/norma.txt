@@ -3,4 +3,4 @@ as is. Email the authors for the password of the ZIP file (boniol.paul@gmail.com
 the academia may use this code only for academic research purposes,
 provided that the authors are properly acknowledged using the citations
 below. Users from the industry may test and evaluate this code by
-requesting a license to: industrials@erganeo.com
+requesting a license.
