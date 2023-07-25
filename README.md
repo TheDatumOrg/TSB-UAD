@@ -1,3 +1,6 @@
+<p align="center">
+<img width="200" src="./doc/logo_TSB.png"/>
+</p>
 
 <h1 align="center">TSB-UAD</h1>
 <h2 align="center">An End-to-End Benchmark Suite for Univariate Time-Series Anomaly Detection</h2>
