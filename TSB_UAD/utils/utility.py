@@ -5,7 +5,7 @@
 
 from __future__ import division
 from __future__ import print_function
-
+from joblib.parallel import cpu_count
 import numpy as np
 from numpy import percentile
 import numbers
@@ -18,7 +18,7 @@ from sklearn.utils import check_array
 from sklearn.utils import check_consistent_length
 from sklearn.utils import check_random_state
 from sklearn.utils.random import sample_without_replacement
-
+import torch.nn as nn
 
 MAX_INT = np.iinfo(np.int32).max
 MIN_INT = -1 * MAX_INT
@@ -622,3 +622,149 @@ def branch2num(branch, init_root=0):
         if b == 'R':
             num.append(num[-1] * 2 + 2)
     return num
+
+def _get_n_jobs(n_jobs):
+    """Get number of jobs for the computation.
+    See sklearn/utils/__init__.py for more information.
+
+    This function reimplements the logic of joblib to determine the actual
+    number of jobs depending on the cpu count. If -1 all CPUs are used.
+    If 1 is given, no parallel computing code is used at all, which is useful
+    for debugging. For n_jobs below -1, (n_cpus + 1 + n_jobs) are used.
+    Thus for n_jobs = -2, all CPUs but one are used.
+    Parameters
+    ----------
+    n_jobs : int
+        Number of jobs stated in joblib convention.
+    Returns
+    -------
+    n_jobs : int
+        The actual number of jobs as positive integer.
+    """
+    if n_jobs < 0:
+        return max(cpu_count() + 1 + n_jobs, 1)
+    elif n_jobs == 0:
+        raise ValueError('Parameter n_jobs == 0 has no meaning.')
+    else:
+        return n_jobs
+
+
+def _partition_estimators(n_estimators, n_jobs):
+    """Private function used to partition estimators between jobs.
+    See sklearn/ensemble/base.py for more information.
+    """
+    # Compute the number of jobs
+    n_jobs = min(_get_n_jobs(n_jobs), n_estimators)
+
+    # Partition estimators between jobs
+    n_estimators_per_job = (n_estimators // n_jobs) * np.ones(n_jobs, dtype=int)
+    n_estimators_per_job[:n_estimators % n_jobs] += 1
+    starts = np.cumsum(n_estimators_per_job)
+
+    return n_jobs, n_estimators_per_job.tolist(), [0] + starts.tolist()
+
+
+def _pprint(params, offset=0, printer=repr):
+    # noinspection PyPep8
+    """Pretty print the dictionary 'params'
+
+    See http://scikit-learn.org/stable/modules/generated/sklearn.base.BaseEstimator.html
+    and sklearn/base.py for more information.
+
+    :param params: The dictionary to pretty print
+    :type params: dict
+
+    :param offset: The offset in characters to add at the begin of each line.
+    :type offset: int
+
+    :param printer: The function to convert entries to strings, typically
+        the builtin str or repr
+    :type printer: callable
+
+    :return: None
+    """
+
+    # Do a multi-line justified repr:
+    options = np.get_printoptions()
+    np.set_printoptions(precision=5, threshold=64, edgeitems=2)
+    params_list = list()
+    this_line_length = offset
+    line_sep = ',\n' + (1 + offset // 2) * ' '
+    for i, (k, v) in enumerate(sorted(params.items())):
+        if type(v) is float:
+            # use str for representing floating point numbers
+            # this way we get consistent representation across
+            # architectures and versions.
+            this_repr = '%s=%s' % (k, str(v))
+        else:
+            # use repr of the rest
+            this_repr = '%s=%s' % (k, printer(v))
+        if len(this_repr) > 500:
+            this_repr = this_repr[:300] + '...' + this_repr[-100:]
+        if i > 0:
+            if this_line_length + len(this_repr) >= 75 or '\n' in this_repr:
+                params_list.append(line_sep)
+                this_line_length = len(line_sep)
+            else:
+                params_list.append(', ')
+                this_line_length += 2
+        params_list.append(this_repr)
+        this_line_length += len(this_repr)
+
+    np.set_printoptions(**options)
+    lines = ''.join(params_list)
+    # Strip trailing space to avoid nightmare in doctests
+    lines = '\n'.join(l.rstrip(' ') for l in lines.split('\n'))
+    return lines
+
+def get_activation_by_name(name):
+    activations = {
+        'relu': nn.ReLU(),
+        'sigmoid': nn.Sigmoid(),
+        'tanh': nn.Tanh(),
+        'leakyrelu':nn.LeakyReLU()
+    }
+
+    if name in activations.keys():
+        return activations[name]
+
+    else:
+        raise ValueError(name, "is not a valid activation function")
+
+def get_optimal_n_bins(X, upper_bound=None, epsilon=1):
+    """ Determine optimal number of bins for a histogram using the Birge 
+    Rozenblac method (see :cite:`birge2006many` for details.)
+     
+    See  https://doi.org/10.1051/ps:2006001 
+     
+    Parameters 
+    ---------- 
+    X : array-like of shape (n_samples, n_features) 
+        The samples to determine the optimal number of bins for. 
+         
+    upper_bound :  int, default=None 
+        The maximum value of n_bins to be considered. 
+        If set to None, np.sqrt(X.shape[0]) will be used as upper bound. 
+         
+    epsilon : float, default = 1 
+        A stabilizing term added to the logarithm to prevent division by zero. 
+         
+    Returns 
+    ------- 
+    optimal_n_bins : int 
+        The optimal value of n_bins according to the Birge Rozenblac method 
+    """
+    if upper_bound is None:
+        upper_bound = int(np.sqrt(X.shape[0]))
+
+    n = X.shape[0]
+    maximum_likelihood = np.zeros((upper_bound - 1, 1))
+
+    for i, b in enumerate(range(1, upper_bound)):
+        histogram, _ = np.histogram(X, bins=b)
+
+        maximum_likelihood[i] = np.sum(
+            histogram * np.log(b * histogram / n + epsilon) - (
+                    b - 1 + np.power(np.log(b), 2.5)))
+
+    return np.argmax(maximum_likelihood) + 1

@@ -461,7 +461,7 @@ class Fourier:
         if len(X2) == 0:
             score = 0
         else:
-            X2 = np.fft.fft(X2);
+            X2 = np.fft.fft(X2)
             X3 = np.fft.fft(X3)
             score = np.linalg.norm(X2 - X3, ord = power)/len(X3)
         self.decision_scores_.append((start_index, score))

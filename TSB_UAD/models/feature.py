@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""Classes of feature mapping for model type B
-"""
-# Author: Yinchen Wu <yinchen@uchicago.edu>
-
 import numpy as np
 import pandas as pd
 import math
@@ -26,20 +21,22 @@ class Window:
     The matrix consists of rows of sliding windows of original X. 
     """
 
-    def __init__(self,  window = 100):
+    def __init__(self,  window = 100, stride = 1):
         self.window = window
+        self.stride = stride
         self.detector = None
     def convert(self, X):
         n = self.window
+        X = X.squeeze()     # (len,)
         X = pd.Series(X)
         L = []
         if n == 0:
             df = X
         else:
-            for i in range(n):
+            for i in range(0, n*self.stride, self.stride):
                 L.append(X.shift(i))
             df = pd.concat(L, axis = 1)
-            df = df.iloc[n-1:]
+            df = df.iloc[(n-1)*self.stride:]
         return df
 
 class tf_Stat:
