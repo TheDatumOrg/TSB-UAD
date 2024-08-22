@@ -10,7 +10,7 @@ The MatrixProfile is computed using Mueen’s ultra-fast Algorithm for Similarit
 The TSB-kit implementation of MatrixProfile is wrapper of [Stumpy](https://stumpy.readthedocs.io/en/latest/index.html) implementation.
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.matrix_profile.MatrixProfile
+.. autoclass:: TSB_UAD.models.matrix_profile.MatrixProfile
     :members:
 
 ```
@@ -21,11 +21,11 @@ The TSB-kit implementation of MatrixProfile is wrapper of [Stumpy](https://stump
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.damp import DAMP
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.damp import DAMP
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'
@@ -92,7 +92,7 @@ The TSB-kit implementation is adapted from [TimeEval](https://github.com/HPI-Inf
 
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.damp.DAMP
+.. autoclass:: TSB_UAD.models.damp.DAMP
     :members:
 
 ```
@@ -103,11 +103,11 @@ The TSB-kit implementation is adapted from [TimeEval](https://github.com/HPI-Inf
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.damp import DAMP
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.damp import DAMP
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'

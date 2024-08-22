@@ -69,12 +69,15 @@ If you use TSB-UAD in your project or research, cite the following two papers:
 
 ## Contributors
 
-* John Paparrizos (University of Chicago)
+* Paul Boniol (Inria, ENS)
+* Qinghua Liu (Ohio State University)
+* John Paparrizos (Ohio State University)
+* Emmanouil Sylligardos (Inria, ENS)
+* Ashwin Krishna (IIT Madras)
 * Yuhao Kang (University of Chicago)
 * Alex Wu (University of Chicago)
 * Teja Bogireddy (University of Chicago)
-* Paul Boniol (Université Paris Cité)
-
+* Themis Palpanas (Université Paris Cité)
 
 ## Installation
 
@@ -98,7 +101,7 @@ The following tools are required to install TSB-UAD from source:
 2. Clone this repository using git and change into its root directory.
 
 ```bash
-git clone https://github.com/johnpaparrizos/TSB-UAD.git
+git clone https://github.com/TheDatumOrg/TSB-UAD.git
 cd TSB-UAD/
 ```
 
@@ -115,6 +118,14 @@ pip install -r requirements.txt
 ```
 
 5. Install TSB-UAD:
+
+You can install TSB-kit with pip.
+
+```
+pip install TSB-UAD
+```
+
+Please note that NormA and Series2Graph are not available on the pip package. To use them, please unlock the corresponding zip files and install the package locally:
 
 ```
 pip install .

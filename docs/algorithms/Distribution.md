@@ -6,7 +6,7 @@
 Histogram-based outlier detection (HBOS) [Goldstein et al. 2012] is an efficient unsupervised method. It assumes the feature independence and calculates the degree of outlyingness by building histograms. The methods is not dedicated for time series. Neverhteless, it can be used for point anomaly detection and subsequence as well, if we consider a subsequence as a vector.
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.hbos.HBOS
+.. autoclass:: TSB_UAD.models.hbos.HBOS
     :members:
 
 ```
@@ -15,11 +15,11 @@ Histogram-based outlier detection (HBOS) [Goldstein et al. 2012] is an efficient
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.hbos import HBOS
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.hbos import HBOS
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'
@@ -69,7 +69,7 @@ The TSB-kit implementation of OCSVM is a wrapper of [Scikit-learn implementation
 
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.ocsvm.OCSVM
+.. autoclass:: TSB_UAD.models.ocsvm.OCSVM
     :members:
 
 ```
@@ -80,11 +80,11 @@ The TSB-kit implementation of OCSVM is a wrapper of [Scikit-learn implementation
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.ocsvm import OCSVM
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.ocsvm import OCSVM
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'

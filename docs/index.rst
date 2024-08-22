@@ -21,7 +21,7 @@ Welcome to TSB-UAD's documentation!
 Overview
 --------
 
-TSB-UAD is a library of univariate time-series anomaly detection methods from the `TSB_UAD benchmark <https://github.com/TheDatumOrg/TSB-UAD>`_. Overall, TSB-UAD contains 14 anomaly detection methods, and 15 evaluation measures. TSB-UAD is part of a larger project called TSB-UAD. The latter provides several time series anomaly detection datasets that can be found here:
+TSB-UAD is a new open, end-to-end benchmark suite to ease the evaluation of univariate time-series anomaly detection methods. Overall, TSB-UAD contains 12686 time series with labeled anomalies spanning different domains with high variability of anomaly types, ratios, and sizes. Specifically, TSB-UAD includes 18 previously proposed datasets containing 1980 time series from real-world data science applications. Motivated by flaws in certain datasets and evaluation strategies in the literature, we study anomaly types and data transformations to contribute two collections of datasets. Specifically, we generate 958 time series using a principled methodology for transforming 126 time-series classification datasets into time series with labeled anomalies. In addition, we present a set of data transformations with which we introduce new anomalies in the public datasets, resulting in 10828 time series (92 datasets) with varying difficulty for anomaly detection.
 
 1. `Real data <https://www.thedatum.org/datasets/TSB-UAD-Public.zip>`_
 2. `Synthetic <https://www.thedatum.org/datasets/TSB-UAD-Synthetic.zip>`_
@@ -34,7 +34,7 @@ Installation
 Quick start:
 
 
-TSB-UAD requires Python between 3.6 and 3.12. You can install it using:
+TSB-UAD supports Python between 3.6 and 3.12. You can install it using:
 
 .. code-block:: bash
 
@@ -49,19 +49,19 @@ The following tools are required to install TSB-UAD from source:
 - conda (anaconda or miniconda)
 
 
-Clone this `repository <https://github.com/boniolp/tsb-kit>`_ using git and go into its root directory.
+Clone this `repository <https://github.com/TheDatumOrg/TSB-UAD.git>`_ using git and go into its root directory.
 
 .. code-block:: bash
 
-   git clone https://github.com/boniolp/tsb-kit.git
-   cd tsb-kit/
+   git clone https://github.com/TheDatumOrg/TSB-UAD.git
+   cd TSB-UAD/
 
-Create and activate a conda-environment 'tsb-kit'.
+Create and activate a conda-environment 'TSB'.
 
 .. code-block:: bash
 
    conda env create --file environment.yml
-   conda activate tsb-kit
+   conda activate TSB
 
 You can then install TSB-UAD with pip.
 
@@ -79,10 +79,10 @@ We depicts below a code snippet demonstrating how to use one anomaly detector (i
    import os
    import numpy as np
    import pandas as pd
-   from tsb_kit.models.iforest import IForest
-   from tsb_kit.models.feature import Window
-   from tsb_kit.utils.slidingWindows import find_length
-   from tsb_kit.vus.metrics import get_metrics
+   from TSB_UAD.models.iforest import IForest
+   from TSB_UAD.models.feature import Window
+   from TSB_UAD.utils.slidingWindows import find_length
+   from TSB_UAD.vus.metrics import get_metrics
 
    df = pd.read_csv('data/benchmark/ECG/MBA_ECG805_data.out', header=None).to_numpy()
    data = df[:, 0].astype(float)
@@ -169,6 +169,7 @@ Contributors
 ^^^^^^^^^^^^
 
 - Paul Boniol (Inria, ENS)
+- Qinghua Liu (Ohio State University)
 - John Paparrizos (Ohio State University)
 - Emmanouil Sylligardos (Inria, ENS)
 - Ashwin Krishna (IIT Madras)

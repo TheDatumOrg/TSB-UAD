@@ -10,10 +10,10 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'TSB-kit'
-copyright = '2024, Paul Boniol, John Paparrizos, Themis Palpanas'
-author = 'Paul Boniol, John Paparrizos, Themis Palpanas'
-release = '0.0.4'
+project = 'TSB-UAD'
+copyright = '2024, Paul Boniol, Qinghua Liu, John Paparrizos, Themis Palpanas'
+author = 'Paul Boniol, Qinghua Liu, John Paparrizos, Themis Palpanas'
+release = '0.0.1'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -43,7 +43,7 @@ autodoc_mock_imports = ['joblib','six','matplotlib','pandas','arch','tsfresh'
 
 html_theme = 'sphinx_rtd_theme'
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-html_logo = '../images/logo-tsb-kit.png'
+html_logo = '../doc/logo_TSB.png'
 
 # -- Napolean settings -------------------------------------------------------
 napoleon_google_docstring = False

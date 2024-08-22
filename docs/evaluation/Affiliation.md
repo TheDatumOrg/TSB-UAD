@@ -3,7 +3,7 @@
 In TSB-kit, we provide a unique fonction to retrieve all evaluation measures.
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.vus.metrics.get_metrics
+.. autoclass:: TSB_UAD.vus.metrics.get_metrics
     :members:
 
 ```
@@ -16,11 +16,11 @@ We depicts below the usage of get\_metrics.
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.sand import SAND
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.sand import SAND
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'

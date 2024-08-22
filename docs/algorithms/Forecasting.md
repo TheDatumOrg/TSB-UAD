@@ -9,7 +9,7 @@ The two latter papers' principle is as follows: A stacked LSTM model is trained 
 The implementation of TSB-kit corresponds to LSTM-AD [Malhotra et al. 2015].
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.lstm.lstm
+.. autoclass:: TSB_UAD.models.lstm.lstm
     :members:
 
 ```
@@ -20,12 +20,12 @@ The implementation of TSB-kit corresponds to LSTM-AD [Malhotra et al. 2015].
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.distance import Fourier
-from tsb_kit.models.lstm import lstm
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.distance import Fourier
+from TSB_UAD.models.lstm import lstm
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'
@@ -96,7 +96,7 @@ Affiliation_Recall : 0.9836496679878174
 This method, called DeepAnt [Munir et al. 2019], is a forecasting-based approach that build a non-linear relationship between current and previous time series points or subsequences (using convolutional Neural Network). The outliers are detected by the deviation between the predicted and actual values.
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.cnn.cnn
+.. autoclass:: TSB_UAD.models.cnn.cnn
     :members:
 
 ```
@@ -107,12 +107,12 @@ This method, called DeepAnt [Munir et al. 2019], is a forecasting-based approach
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.distance import Fourier
-from tsb_kit.models.cnn import cnn
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.distance import Fourier
+from TSB_UAD.models.cnn import cnn
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'

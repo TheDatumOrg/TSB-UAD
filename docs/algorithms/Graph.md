@@ -12,11 +12,11 @@ Series2Graph [Boniol and Palpanas 2020] is a graph-based appraoch for time seire
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.series2graph import Series2Graph
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.series2graph import Series2Graph
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'

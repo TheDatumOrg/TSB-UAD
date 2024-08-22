@@ -10,7 +10,7 @@ The reconstruction error can be used as an anomalous score for the specific anom
 As autoencoder has been a popular method in the recent decade, many anomaly detection algorithms are based on autoencoder algorithms' implementation. For TSB-kit autoencoder implementation, we use a simple encoder with two consecutive dense layers (32 and 16 neurons respectivelly) for the encoder and the decoder.
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.AE.AE_MLP2
+.. autoclass:: TSB_UAD.models.AE.AE_MLP2
     :members:
 
 ```
@@ -21,11 +21,11 @@ As autoencoder has been a popular method in the recent decade, many anomaly dete
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.AE import AE_MLP2
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.AE import AE_MLP2
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'

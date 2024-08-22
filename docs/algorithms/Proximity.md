@@ -9,7 +9,7 @@ The TSB-kit implementation of LOF is a wrapper of [Scikit-learn implementation o
 
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.lof.LOF
+.. autoclass:: TSB_UAD.models.lof.LOF
     :members:
 
 ```
@@ -20,11 +20,11 @@ The TSB-kit implementation of LOF is a wrapper of [Scikit-learn implementation o
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.lof import LOF
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.lof import LOF
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'

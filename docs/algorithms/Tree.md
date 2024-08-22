@@ -11,7 +11,7 @@ If we assume the latter statement, we only have to produce a partitioning proces
 The TSB-kit implementation of IForest is a wrapper of [Scikit-learn implementation of IsolationForest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html).
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.iforest.IForest
+.. autoclass:: TSB_UAD.models.iforest.IForest
     :members:
 
 ```
@@ -24,11 +24,11 @@ Here is a code snippet that shows how to run Isolation Forest.
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.iforest import IForest
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.iforest import IForest
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'

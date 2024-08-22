@@ -11,7 +11,7 @@ The code snippet below shows how to read the time series and the labels from a T
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.models.feature import Window
+from TSB_UAD.models.feature import Window
 
 
 #Read data
@@ -28,7 +28,7 @@ label = df[:,1].astype(int)
 You can use the Window class for methods that require a NumPy array of shape (n\_samples-length,m) corresponding to all consecutive subsequences of length m in the time series.
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.feature.Window
+.. autoclass:: TSB_UAD.models.feature.Window
     :members:
 
 ```
@@ -54,7 +54,7 @@ In TSB-kit, we provide a function to automatically compute an "optimal" subseque
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.slidingWindows import find_length
+from TSB_UAD.utils.slidingWindows import find_length
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'

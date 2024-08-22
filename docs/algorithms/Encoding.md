@@ -9,7 +9,7 @@ The first encoding-based approach is to encode and represent the time series wit
 The TSB-kit implementation of PCA is adapted from [PyOD implementation](https://pyod.readthedocs.io/en/latest/) [Zhao et al. 2019].
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.pca.PCA
+.. autoclass:: TSB_UAD.models.pca.PCA
     :members:
 
 ```
@@ -20,11 +20,11 @@ The TSB-kit implementation of PCA is adapted from [PyOD implementation](https://
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.pca import PCA
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.pca import PCA
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'
@@ -91,7 +91,7 @@ POLY is a encoding-based anoamly detection methods that aims to detect pointwise
 
 
 ```{eval-rst}  
-.. autoclass:: tsb_kit.models.poly.POLY
+.. autoclass:: TSB_UAD.models.poly.POLY
     :members:
 
 ```
@@ -102,12 +102,12 @@ POLY is a encoding-based anoamly detection methods that aims to detect pointwise
 import os
 import numpy as np
 import pandas as pd
-from tsb_kit.utils.visualisation import plotFig
-from tsb_kit.models.distance import Fourier
-from tsb_kit.models.poly import POLY
-from tsb_kit.models.feature import Window
-from tsb_kit.utils.slidingWindows import find_length
-from tsb_kit.vus.metrics import get_metrics
+from TSB_UAD.utils.visualisation import plotFig
+from TSB_UAD.models.distance import Fourier
+from TSB_UAD.models.poly import POLY
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 #Read data
 filepath = 'PATH_TO_TSB_UAD/ECG/MBA_ECG805_data.out'
