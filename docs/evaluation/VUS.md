@@ -1,4 +1,4 @@
-![VUS](../../images/measures/VUS.jpg "VUS measures")
+![VUS](../../assets/measures/VUS.jpg "VUS measures")
 
 # VUS-based Evaluation
 

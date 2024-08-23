@@ -1,4 +1,4 @@
-![threshold measures](../../images/measures/Threshold.png "threshold measures")
+![threshold measures](../../assets/measures/Threshold.png "threshold measures")
 
 # Threshold-based Evaluation
 

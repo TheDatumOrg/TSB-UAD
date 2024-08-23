@@ -2,7 +2,7 @@
 
 We divide methods into three categories: (i) distance-based, (ii) density-based, and (iii) prediction-based. The figure below illustrates our proposed process-centric taxonomy. (Note that the second-level categorization is not mutually exclusive; e.g., a  model might encode the time series data while adopting a discord-based identification strategy.)
 
-![Anomaly detection taxonomy](../../images/taxonomy_short.png "Anomaly detection taxonomy")
+![Anomaly detection taxonomy](../../assets/taxonomy_short.png "Anomaly detection taxonomy")
 
 ## Distance-based
 
@@ -18,5 +18,5 @@ This category contains methods train a model to reconstruct the normal data, or 
 
 We provide below a detailed taxonomy of methods proposed in the literature.
 
-![Detailed taxonomy](../../images/detailed_taxonomy.png "Detailed taxonomy")
+![Detailed taxonomy](../../assets/detailed_taxonomy.png "Detailed taxonomy")
 

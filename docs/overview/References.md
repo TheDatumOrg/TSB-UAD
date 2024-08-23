@@ -205,7 +205,7 @@ echo state networks for anomaly detection. 32(8):3685–3694,
 
 [Gao et al., 2020] Yifeng Gao, Jessica Lin, and Constantin Brif. Ensemble Grammar Induction For Detecting Anomalies in Time Series. In Proceedings of the International Conference on Extending Database Technology (EDBT), 2020.
 
-[Garcia et al., 2020] Gabriel Garcia, Gabriel Michau, Melanie Ducoffe, Jayant Sen Gupta, and Olga Fink. Time series to images: Monitoring the condition of industrial assets with deep learning image processing algorithms. 05 2020.
+[Garcia et al., 2020] Gabriel Garcia, Gabriel Michau, Melanie Ducoffe, Jayant Sen Gupta, and Olga Fink. Time series to assets: Monitoring the condition of industrial assets with deep learning image processing algorithms. 05 2020.
 
 [Goldstein and Dengel, 2013] Markus Goldstein and Andreas Dengel. Histogram-based outlier score (hbos): A fast unsupervised anomaly detection algorithm, 2013.
 

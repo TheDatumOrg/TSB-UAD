@@ -1,5 +1,5 @@
 <p align="center">
-<img width="200" src="./doc/logo_TSB.png"/>
+<img width="200" src="./assets/logo_TSB.png"/>
 </p>
 
 <h1 align="center">TSB-UAD</h1>
@@ -141,7 +141,7 @@ We first collected 18 public datasets from heterogeneous domains (you may find t
 The figure below shows some typical outliers in these 18 datasets.
 
 <p align="center">
-<img width="1000" src="./doc/figures_data/display_data.jpg"/>
+<img width="1000" src="./assets/figures_data/display_data.jpg"/>
 </p>
 
 Briefly, TSB-UAD includes the following datasets:
@@ -199,15 +199,15 @@ We also include synthetic and artifical datasets. We construct and transformed d
 * **artificial/** contains the data that are constructed based on UCR2018-NEW. Below is a figure illustrating the construction process.
 
 <p align="center">
-<img width="500" src="./doc/figures_data/transform_subsequence.png"/>
+<img width="500" src="./assets/figures_data/transform_subsequence.png"/>
 </p>
 
 * **synthetic/** contains the data that are synthesized by local and global tranformations. Below is a figure illustrating the transformation process.
 <p align="center">
-<img width="500" src="./doc/figures_data/transform_global.png"/>
+<img width="500" src="./assets/figures_data/transform_global.png"/>
 </p>
 <p align="center">
-<img width="500" src="./doc/figures_data/transform_local.png"/>
+<img width="500" src="./assets/figures_data/transform_local.png"/>
 </p>
 
 ## Anomaly Detectors
@@ -264,10 +264,10 @@ Here we only report the average accuracy (AUC-ROC and F score) for each dataset.
 We then compare the accuracy scores of the anoamly detection methods on time series containing point versus sequence anomalies and a single versus multiple anomalies. The following figure summarize the results:
 
 <p align="center">
-<img width="1000" src="./doc/figures_results/all_results.jpg"/>
+<img width="1000" src="./assets/figures_results/all_results.jpg"/>
 </p>
 
-This figure and many others comparisons are described (and reproductible) in [this notebook](https://github.com/TheDatumOrg/TSB-UAD/blob/main/result/accuracy_evaluation/Statistical_Analysis_TSB.ipynb), summarized in [this document](https://github.com/TheDatumOrg/TSB-UAD/blob/main/result/accuracy_evaluation/Statistical_Analysis_TSB.pdf).
+This figure and many others comparisons are described (and reproductible) in [this notebook](https://github.com/TheDatumOrg/TSB-UAD/blob/main/result/accuracy_evaluation/Statistical_Analysis_TSB.ipynb), summarized in [this assetsument](https://github.com/TheDatumOrg/TSB-UAD/blob/main/result/accuracy_evaluation/Statistical_Analysis_TSB.pdf).
 The scripts to reproduce the critical diagrams and the statistical tests are [here](https://github.com/TheDatumOrg/TSB-UAD/tree/main/result/statistical_test).
 
 

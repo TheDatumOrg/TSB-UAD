@@ -1,4 +1,4 @@
-![icon](../../images/method_icons/reconstruction.png "icon")
+![icon](../../assets/method_icons/reconstruction.png "icon")
 # Reconstruction-based methods
 
 ## AutoEncoder (AE)
@@ -75,5 +75,5 @@ VUS_PR : 0.7985717813531896
 Affiliation_Precision : 0.9784117321775244
 Affiliation_Recall : 0.9979366661199016
 ```
-![Result](../../images/method_results/AE.png "AE Result")
+![Result](../../assets/method_results/AE.png "AE Result")
 

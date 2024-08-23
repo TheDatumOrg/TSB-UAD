@@ -1,4 +1,4 @@
-![icons](../../images/method_icons/Clustering.png "icons")
+![icons](../../assets/method_icons/Clustering.png "icons")
 # Clustering-based methods
 
 ## NormA
@@ -63,7 +63,7 @@ VUS_PR : 0.988052538139092
 Affiliation_Precision : 0.9812433853440004
 Affiliation_Recall : 1.0
 ```
-![Result](../../images/method_results/NORMA.png "NormA Result")
+![Result](../../assets/method_results/NORMA.png "NormA Result")
 
 ### References
 
@@ -139,7 +139,7 @@ VUS_PR : 0.9802087454821152
 Affiliation_Precision : 0.9825340283920497
 Affiliation_Recall : 1.0
 ```
-![Result](../../images/method_results/SAND-offline.png "SAND (offline) Result")
+![Result](../../assets/method_results/SAND-offline.png "SAND (offline) Result")
 
 ### Example with Online mode (streaming time series)
 
@@ -199,7 +199,7 @@ VUS_PR : 0.9542280349659151
 Affiliation_Precision : 0.9776035535846139
 Affiliation_Recall : 0.9999950659680077
 ```
-![Result](../../images/method_results/SAND-online.png "SAND (online) Result")
+![Result](../../assets/method_results/SAND-online.png "SAND (online) Result")
 
 ### References
 

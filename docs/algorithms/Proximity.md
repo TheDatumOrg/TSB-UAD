@@ -1,4 +1,4 @@
-![icon](../../images/method_icons/proximity.png "icon")
+![icon](../../assets/method_icons/proximity.png "icon")
 # Proximity-based methods
 
 ## Local Outlier Factor (LOF)
@@ -74,7 +74,7 @@ VUS_PR : 0.35228784121262147
 Affiliation_Precision : 0.942248287092041
 Affiliation_Recall : 0.978882103900466
 ```
-![Result](../../images/method_results/LOF.png "LOF Result")
+![Result](../../assets/method_results/LOF.png "LOF Result")
 
 ### References
 

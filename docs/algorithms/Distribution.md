@@ -1,4 +1,4 @@
-![icon](../../images/method_icons/distrib.png "icon")
+![icon](../../assets/method_icons/distrib.png "icon")
 # Distribution-based methods
 
 ## Histogram-based Outlier Score (HBOS)
@@ -141,7 +141,7 @@ VUS_PR : 0.8021253491270806
 Affiliation_Precision : 0.9798093961448288
 Affiliation_Recall : 0.9970749874410433
 ```
-![Result](../../images/method_results/OCSVM.png "OCSVM Result")
+![Result](../../assets/method_results/OCSVM.png "OCSVM Result")
 
 ### References
 

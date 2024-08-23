@@ -1,4 +1,4 @@
-![AUC](../../images/measures/AUC.jpg "AUC measures")
+![AUC](../../assets/measures/AUC.jpg "AUC measures")
 
 # AUC-based Evaluation
 

@@ -1,4 +1,4 @@
-![icon](../../images/method_icons/tree.png "icon")
+![icon](../../assets/method_icons/tree.png "icon")
 # Tree-based methods
 
 
@@ -79,7 +79,7 @@ VUS_PR : 0.8858037295594041
 Affiliation_Precision : 0.9630674176380548
 Affiliation_Recall : 0.9809813654809071
 ```
-![Result](../../images/method_results/IForest.png "Iforest Result")
+![Result](../../assets/method_results/IForest.png "Iforest Result")
 
 ### References
 

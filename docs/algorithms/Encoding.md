@@ -1,4 +1,4 @@
-![icon](../../images/method_icons/encoding.png "icon")
+![icon](../../assets/method_icons/encoding.png "icon")
 # Encoding-based methods
 
 ## Principal Component Analysis-based Anomaly Detection (PCA)
@@ -75,7 +75,7 @@ VUS_PR : 0.9475589866373976
 Affiliation_Precision : 0.9890337001400605
 Affiliation_Recall : 0.9982808225194953
 ```
-![Result](../../images/method_results/PCA.png "PCA Result")
+![Result](../../assets/method_results/PCA.png "PCA Result")
 
 ### References
 
@@ -159,7 +159,7 @@ VUS_PR : 0.9465631009222253
 Affiliation_Precision : 0.9810555530560522
 Affiliation_Recall : 0.9999934905686477
 ```
-![Result](../../images/method_results/POLY.png "POLY Result")
+![Result](../../assets/method_results/POLY.png "POLY Result")
 
 ### References
 

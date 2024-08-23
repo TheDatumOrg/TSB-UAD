@@ -1,4 +1,4 @@
-![icon](../../images/method_icons/forecasting.png "icon")
+![icon](../../assets/method_icons/forecasting.png "icon")
 # Forecasting-based methods
 
 ## Long Short-Term Memory Anomaly Detection (LSTM)
@@ -78,7 +78,7 @@ VUS_PR : 0.1426549169000135
 Affiliation_Precision : 0.6036749472429264
 Affiliation_Recall : 0.9836496679878174
 ```
-![Result](../../images/method_results/LSTM.png "AE Result")
+![Result](../../assets/method_results/LSTM.png "AE Result")
 
 ### References
 
@@ -165,7 +165,7 @@ VUS_PR : 0.4065135625548785
 Affiliation_Precision : 0.9128891170124862
 Affiliation_Recall : 0.9900155246934222
 ```
-![Result](../../images/method_results/CNN.png "CNN Result")
+![Result](../../assets/method_results/CNN.png "CNN Result")
 
 ### References
 

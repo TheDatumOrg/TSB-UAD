@@ -1,4 +1,4 @@
-![icon](../../images/method_icons/discord.png "icon")
+![icon](../../assets/method_icons/discord.png "icon")
 # Discord-based methods
 
 ## Matrix Profile
@@ -73,7 +73,7 @@ VUS_PR : 0.39033909329157723
 Affiliation_Precision : 0.9015749833720904
 Affiliation_Recall : 0.9720951147963328
 ```
-![Result](../../images/method_results/MP.png "MatrixProfile Result")
+![Result](../../assets/method_results/MP.png "MatrixProfile Result")
 
 ### References
 
@@ -155,7 +155,7 @@ VUS_PR : 0.5943507237860649
 Affiliation_Precision : 0.6162807136520358
 Affiliation_Recall : 0.9999402806808003
 ```
-![Result](../../images/method_results/DAMP.png "DAMP Result")
+![Result](../../assets/method_results/DAMP.png "DAMP Result")
 
 ### References
 

@@ -1,4 +1,4 @@
-![icon](../../images/method_icons/graph.png "icon")
+![icon](../../assets/method_icons/graph.png "icon")
 # Graph-based methods
 
 ## Series2Graph
@@ -66,7 +66,7 @@ VUS_PR : 0.8203200675085416
 Affiliation_Precision : 0.9282931033407741
 Affiliation_Recall : 0.9989565215573869
 ```
-![Result](../../images/method_results/Series2Graph.png "Series2Graph Result")
+![Result](../../assets/method_results/Series2Graph.png "Series2Graph Result")
 
 ### References
 
