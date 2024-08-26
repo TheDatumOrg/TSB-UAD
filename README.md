@@ -290,22 +290,31 @@ We depicts below a code snippet demonstrating how to use one anomaly detector (i
 
 ```python
 import os
+import numpy as np
 import pandas as pd
-from TSB_UAD.core import tsb_uad
-
+from TSB_UAD.models.iforest import IForest
+from TSB_UAD.models.feature import Window
+from TSB_UAD.utils.slidingWindows import find_length
+from TSB_UAD.vus.metrics import get_metrics
 
 df = pd.read_csv('data/benchmark/ECG/MBA_ECG805_data.out', header=None).to_numpy()
 data = df[:, 0].astype(float)
 label = df[:, 1]
-results = tsb_uad(data, label, 'IForest', metric='all')
 
-metrics = {}
+slidingWindow = find_length(data)
+X_data = Window(window = slidingWindow).convert(data).to_numpy()
+
+clf = IForest(n_jobs=1)
+clf.fit(X_data)
+score = clf.decision_scores_
+
+score = MinMaxScaler(feature_range=(0,1)).fit_transform(score.reshape(-1,1)).ravel()
+score = np.array([score[0]]*math.ceil((slidingWindow-1)/2) + list(score) + [score[-1]]*((slidingWindow-1)//2))
+
+
+results = get_metrics(score, label, metric="all", slidingWindow=slidingWindow)
 for metric in results.keys():
-    metrics[metric] = [results[metric]]
     print(metric, ':', results[metric])
-
-df = pd.DataFrame(data=metrics)
-df.to_csv(os.path.join('./all_metrics.csv'))
 ```
 
 ```
