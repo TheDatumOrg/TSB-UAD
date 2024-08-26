@@ -13,7 +13,7 @@ from numpy.linalg import norm, eigh
 from numpy.fft import fft, ifft
 
 from tslearn.clustering import KShape
-from tslearn.cycc import cdist_normalized_cc, y_shifted_sbd_vec
+from tslearn.metrics import cdist_normalized_cc, y_shifted_sbd_vec
 from tslearn.utils import to_time_series_dataset,to_time_series
 
 import stumpy
@@ -21,25 +21,25 @@ import stumpy
 
 
 class SAND():
-	
-
 	"""
-	Online and offline method that use a set of weighted subsequences (Theta) to identify anomalies. 
-	The anomalies are identified by computing the distance of a given subsequence (the targeted 
-	subsequence to analyze) to Theta
+	Online and offline implementation of SAND
+	
+	Parameters
 	----------
-	subsequence_length : int : subsequence length to analyze
-	pattern_length : int (greater than pattern length): length of the subsequences in Theta
-	k : int (greater than 1) : number of subsequences in Theta
+	subsequence_length : int
+		Subsequence length to analyze.
+	pattern_length : int (greater than subsequence_length)
+		Length of the subsequences in Theta.
+	k : int (greater than 1), (default=6)
+		Number of subsequences in Theta.
 
-	online : Boolean, Compute the analysis online or offline
-	- Online: run per batch the model update and the computation of the score
-	(requires the set alpha, init_length, and batch_size)
-	- Offline: run the model for one unique batch
-
-	alpha : float ([0,1]) : update rate (used in Online mode only)
-	init_length : int (greater than subsequence_length) : length of the initial batch (used in Online mode only)
-	batch_size : int (greater than subsequence_length) : length of the batches (used in Online mode only)
+	Attributes
+	----------
+	decision_scores_ : numpy array of shape (n_samples - subsequence_length,)
+		The anomaly score.
+		The higher, the more abnormal. Anomalies tend to have higher
+		scores. This value is available once the detector is
+		fitted.
 	"""
 	def __init__(self,pattern_length,subsequence_length,k=6):
 		
@@ -61,26 +61,41 @@ class SAND():
 		self.clusters_subseqs = []
 	
 	
-	"""
-	Build the model and compute the anoamly score
-	----------
-	X : np.array or List, the time series to analyse
 	
-	online : Boolean, Compute the analysis online or offline
-	- Online: run per batch the model update and the computation of the score
-	(requires the set alpha, init_length, and batch_size)
-	- Offline: run the model for one unique batch
-
-	alpha : float ([0,1]) : update rate (used in Online mode only)
-	init_length : int (greater than subsequence_length) : length of the initial batch (used in Online mode only)
-	batch_size : int (greater than subsequence_length) : length of the batches (used in Online mode only)
-	overlapping rate (smaller than len(X)//2 and batch_size//2) : Number points seperating subsequences in the time series.
-	"""
 	def fit(self,X, y=None,online=False,alpha=None,init_length=None,batch_size=None,overlaping_rate=10,verbose=False):
-		# Take subsequence every 'overlaping_rate' points
-		# Change it to 1 for completely overlapping subsequences 
-		# Change it to 'subsequence_length' for non-overlapping subsequences 
-		# Change it to 'subsequence_length//4' for non-trivial matching subsequences 
+		"""Fit detector. y is ignored in unsupervised methods.
+		
+		Parameters
+		----------
+
+		X : numpy array of shape (n_samples, )
+			The input samples.
+		y : Ignored
+			Not used, present for API consistency by convention.
+		online : Boolean, Compute the analysis online or offline
+
+			- if Online, run per batch the model update and the computation of the score (requires to set alpha, init_length, and batch_size)
+			- if Offline, run the model for one unique batch
+		
+		alpha : float ([0,1])
+			Update rate (used in Online mode only)
+		init_length : int (greater than subsequence_length)
+			Length of the initial batch (used in Online mode only).
+		batch_size : int (greater than subsequence_length) 
+			Length of the batches (used in Online mode only).
+		overlaping_rate : int (greater than 1)
+			Take subsequence every 'overlaping_rate' points
+			
+				- Change it to 1 for completely overlapping subsequences 
+				- Change it to 'subsequence_length' for non-overlapping subsequences 
+				- Change it to 'subsequence_length//4' for non-trivial matching subsequences 
+
+
+		Returns
+		-------
+		self : object
+			Fitted estimator.
+		"""
 		self.overlaping_rate = overlaping_rate
 		self.ts = list(X)
 		self.decision_scores_ = []

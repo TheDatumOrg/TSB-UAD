@@ -12,10 +12,8 @@ from .detectorB import DetectorB
 
 
 class HBOS(DetectorB):
-    """Histogram- based outlier detection (HBOS) is an efficient unsupervised
-    method. It assumes the feature independence and calculates the degree
-    of outlyingness by building histograms. See :cite:`goldstein2012histogram`
-    for details.
+    """Histogram- based outlier detection (HBOS) implementation
+    
     Parameters
     ----------
     n_bins : int, optional (default=10)
@@ -29,16 +27,17 @@ class HBOS(DetectorB):
         The amount of contamination of the data set,
         i.e. the proportion of outliers in the data set. Used when fitting to
         define the threshold on the decision function.
+    
     Attributes
     ----------
-    bin_edges_ : numpy array of shape (n_bins + 1, n_features )
-        The edges of the bins.
-    hist_ : numpy array of shape (n_bins, n_features)
-        The density of each histogram.
     decision_scores_ : numpy array of shape (n_samples,)
         The outlier scores of the training data.
         The higher, the more abnormal. Outliers tend to have higher
         scores. This value is available once the detector is fitted.
+    bin_edges_ : numpy array of shape (n_bins + 1, n_features )
+        The edges of the bins.
+    hist_ : numpy array of shape (n_bins, n_features)
+        The density of each histogram.
     threshold_ : float
         The threshold is based on ``contamination``. It is the
         ``n_samples * contamination`` most abnormal samples in
@@ -62,12 +61,14 @@ class HBOS(DetectorB):
 
     def fit(self, X, y=None):
         """Fit detector. y is ignored in unsupervised methods.
+        
         Parameters
         ----------
         X : numpy array of shape (n_samples, n_features)
-            The input samples.
+            The input samples (time series length). n_features corresponds to the subsequence length.
         y : Ignored
             Not used, present for API consistency by convention.
+        
         Returns
         -------
         self : object
@@ -107,11 +108,13 @@ class HBOS(DetectorB):
         The anomaly score of an input sample is computed based on different
         detector algorithms. For consistency, outliers are assigned with
         larger anomaly scores.
+        
         Parameters
         ----------
         X : numpy array of shape (n_samples, n_features)
             The training input samples. Sparse matrices are accepted only
             if they are supported by the base estimator.
+        
         Returns
         -------
         anomaly_scores : numpy array of shape (n_samples,)
@@ -133,6 +136,7 @@ def _calculate_outlier_scores(X, bin_edges, hist, n_bins, alpha,
     the bins and histograms constructed with the training data. The program
     is optimized through numba. It is excluded from coverage test for
     eliminating the redundancy.
+    
     Parameters
     ----------
     X : numpy array of shape (n_samples, n_features)
@@ -148,6 +152,7 @@ def _calculate_outlier_scores(X, bin_edges, hist, n_bins, alpha,
     tol : float in (0, 1), optional (default=0.1)
         The parameter to decide the flexibility while dealing
         the samples falling outside the bins.
+    
     Returns
     -------
     outlier_scores : numpy array of shape (n_samples, n_features)

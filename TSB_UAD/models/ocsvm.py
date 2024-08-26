@@ -17,14 +17,10 @@ from .detectorB import DetectorB
 
 class OCSVM(DetectorB):
     """Wrapper of scikit-learn one-class SVM Class with more functionalities.
-    Unsupervised Outlier Detection.
-    Estimate the support of a high-dimensional distribution.
-    The implementation is based on libsvm.
-    See http://scikit-learn.org/stable/modules/svm.html#svm-outlier-detection
-    and :cite:`scholkopf2001estimating`.
+    
     Parameters
     ----------
-    kernel : string, optional (default='rbf')
+    kernel : string, optional, default='rbf'
          Specifies the kernel type to be used in the algorithm.
          It must be one of 'linear', 'poly', 'rbf', 'sigmoid', 'precomputed' or
          a callable.
@@ -38,7 +34,7 @@ class OCSVM(DetectorB):
     degree : int, optional (default=3)
         Degree of the polynomial kernel function ('poly').
         Ignored by all other kernels.
-    gamma : float, optional (default='auto')
+    gamma : float, optional, default='auto'
         Kernel coefficient for 'rbf', 'poly' and 'sigmoid'.
         If gamma is 'auto' then 1/n_features will be used instead.
     coef0 : float, optional (default=0.0)
@@ -60,8 +56,13 @@ class OCSVM(DetectorB):
         The amount of contamination of the data set, i.e.
         the proportion of outliers in the data set. Used when fitting to
         define the threshold on the decision function.
+    
     Attributes
     ----------
+    decision_scores_ : numpy array of shape (n_samples,)
+        The outlier scores of the training data.
+        The higher, the more abnormal. Outliers tend to have higher
+        scores. This value is available once the detector is fitted.
     support_ : array-like, shape = [n_SV]
         Indices of support vectors.
     support_vectors_ : array-like, shape = [nSV, n_features]
@@ -75,10 +76,6 @@ class OCSVM(DetectorB):
         `support_vectors_`
     intercept_ : array, shape = [1,]
         Constant in the decision function.
-    decision_scores_ : numpy array of shape (n_samples,)
-        The outlier scores of the training data.
-        The higher, the more abnormal. Outliers tend to have higher
-        scores. This value is available once the detector is fitted.
     threshold_ : float
         The threshold is based on ``contamination``. It is the
         ``n_samples * contamination`` most abnormal samples in
@@ -108,6 +105,7 @@ class OCSVM(DetectorB):
 
     def fit(self, X_train, X_test, y=None, sample_weight=None, **params):
         """Fit detector. y is ignored in unsupervised methods.
+        
         Parameters
         ----------
         X : numpy array of shape (n_samples, n_features)
@@ -117,6 +115,7 @@ class OCSVM(DetectorB):
         sample_weight : array-like, shape (n_samples,)
             Per-sample weights. Rescale C per sample. Higher weights
             force the classifier to put more emphasis on these points.
+        
         Returns
         -------
         self : object
@@ -152,11 +151,13 @@ class OCSVM(DetectorB):
         The anomaly score of an input sample is computed based on different
         detector algorithms. For consistency, outliers are assigned with
         larger anomaly scores.
+        
         Parameters
         ----------
         X : numpy array of shape (n_samples, n_features)
             The training input samples. Sparse matrices are accepted only
             if they are supported by the base estimator.
+        
         Returns
         -------
         anomaly_scores : numpy array of shape (n_samples,)
@@ -170,6 +171,8 @@ class OCSVM(DetectorB):
     def support_(self):
         """Indices of support vectors.
         Decorator for scikit-learn One class SVM attributes.
+
+        :meta private:
         """
         return self.detector_.support_
 
@@ -177,6 +180,8 @@ class OCSVM(DetectorB):
     def support_vectors_(self):
         """Support vectors.
         Decorator for scikit-learn One class SVM attributes.
+
+        :meta private:
         """
         return self.detector_.support_vectors_
 
@@ -184,6 +189,8 @@ class OCSVM(DetectorB):
     def dual_coef_(self):
         """Coefficients of the support vectors in the decision function.
         Decorator for scikit-learn One class SVM attributes.
+
+        :meta private:
         """
         return self.detector_.dual_coef_
 
@@ -194,6 +201,8 @@ class OCSVM(DetectorB):
         `coef_` is readonly property derived from `dual_coef_` and
         `support_vectors_`
         Decorator for scikit-learn One class SVM attributes.
+
+        :meta private:
         """
         return self.detector_.coef_
 
@@ -201,5 +210,7 @@ class OCSVM(DetectorB):
     def intercept_(self):
         """ Constant in the decision function.
         Decorator for scikit-learn One class SVM attributes.
+
+        :meta private:
         """
         return self.detector_.intercept_

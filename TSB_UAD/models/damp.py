@@ -1,3 +1,7 @@
+"""DAMP.
+"""
+
+
 import numpy as np
 import stumpy as st
 import pandas as pd
@@ -5,19 +9,24 @@ import pandas as pd
 
 class DAMP():
     """
-    Implementation of the DAMP algorithm proposed in this paper https://www.cs.ucr.edu/~eamonn/DAMP_long_version.pdf.
-    Inspiration from https://github.com/HPI-Information-Systems/TimeEval-algorithms/blob/main/damp/damp/damp.py
-    """
+    Implementation of the DAMP algorithm
 
-    """
+    Parameters
     ----------
     m : int,
         target subsequence length.
     sp_index : int
         Need to be strictly greater than m. 
     x_lag : int
-        default value None and set to 2**int(np.ceil(np.log2( 8*self.m )))
+        default value None and set to ``2**int(np.ceil(np.log2( 8*self.m )))``
+    
+    Attributes
     ----------
+    decision_scores_ : numpy array of shape (n_samples - m,)
+        The anomaly score.
+        The higher, the more abnormal. Anomalies tend to have higher
+        scores. This value is available once the detector is
+        fitted.
     """
 
     def __init__(self,m,sp_index,x_lag = None):
@@ -31,7 +40,21 @@ class DAMP():
         self._BFS = 0
 
     def fit(self, X, y=None):
+        """Fit detector. y is ignored in unsupervised methods.
         
+        Parameters
+        ----------
+        X : numpy array of shape (n_samples, n_features)
+            The input samples.
+        y : Ignored
+            Not used, present for API consistency by convention.
+        
+        Returns
+        -------
+        self : object
+            Fitted estimator.
+        """
+
         self._pv = np.ones(len(X) - self.m + 1, dtype=int)
         aMP = np.zeros_like(self._pv, dtype=float)
 

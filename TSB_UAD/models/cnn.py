@@ -7,16 +7,52 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 
 class cnn:
-    def __init__(self, slidingwindow = 100, predict_time_steps=1, contamination = 0.1, epochs = 10, patience = 10, verbose=0):
+    """
+    Implementation of CNN
+    
+    Parameters
+    ----------
+    slidingwindow : int
+        Subsequence length to analyze.
+    predict_time_steps : int, (default=1)
+        The length of the subsequence to predict.
+    epochs : int, (default=10)
+        Number of epochs for the training phase
+    patience : int, (default=10)
+        Number of epoch to wait before early stopping during training
+
+    Attributes
+    ----------
+    decision_scores_ : numpy array of shape (n_samples - subsequence_length,)
+        The anomaly score.
+        The higher, the more abnormal. Anomalies tend to have higher
+        scores. This value is available once decision_function is called.
+    """
+    def __init__(self, slidingwindow = 100, predict_time_steps=1, epochs = 10, patience = 10, verbose=0):
         self.slidingwindow = slidingwindow
         self.predict_time_steps = predict_time_steps
-        self.contamination = contamination
         self.epochs = epochs
         self.patience = patience
         self.verbose = verbose
         self.model_name = 'cnn'
         
     def fit(self, X_clean, X_dirty, ratio = 0.15):
+        """Fit detector.
+        
+        Parameters
+        ----------
+        X_clean : numpy array of shape (n_samples, )
+            The input training samples.
+        X_dirty : numpy array of shape (n_samples, )
+            The input testing samples.
+        ratio : flaot, ([0,1])
+            The ratio for the train validation split
+        
+        Returns
+        -------
+        self : object
+            Fitted estimator.
+        """
 
         slidingwindow = self.slidingwindow
         predict_time_steps = self.predict_time_steps
@@ -83,22 +119,20 @@ class cnn:
     
 
     
-    def decision_function(self, X= False, measure = None):
+    def decision_function(self, measure = None):
         """Derive the decision score based on the given distance measure
+        
         Parameters
         ----------
-        X : numpy array of shape (n_samples, )
-            The input samples.
         measure : object
             object for given distance measure with methods to derive the score
+        
         Returns
         -------
         self : object
             Fitted estimator.
         """
-        if type(X) != bool:
-            self.X_train_ = X
-
+        
         Y_test = self.Y_test
 
         score = []

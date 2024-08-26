@@ -10,16 +10,53 @@ from sklearn.utils.validation import check_is_fitted
 from sklearn.preprocessing import MinMaxScaler
 
 class lstm:
-    def __init__(self, slidingwindow = 100, predict_time_steps=1, contamination = 0.1, epochs = 10, patience = 10, verbose=0):
+    """
+    Implementation of LSTM-AD
+    
+    Parameters
+    ----------
+    slidingwindow : int
+        Subsequence length to analyze.
+    predict_time_steps : int, (default=1)
+        The length of the subsequence to predict.
+    epochs : int, (default=10)
+        Number of epochs for the training phase
+    patience : int, (default=10)
+        Number of epoch to wait before early stopping during training
+
+    Attributes
+    ----------
+    decision_scores_ : numpy array of shape (n_samples - subsequence_length,)
+        The anomaly score.
+        The higher, the more abnormal. Anomalies tend to have higher
+        scores. This value is available once decision_function is called.
+    """
+
+    def __init__(self, slidingwindow = 100, predict_time_steps=1, epochs = 10, patience = 10, verbose=0):
         self.slidingwindow = slidingwindow
         self.predict_time_steps = predict_time_steps
-        self.contamination = contamination
         self.epochs = epochs
         self.patience = patience
         self.verbose = verbose
         self.model_name = 'LSTM2'
         
     def fit(self, X_clean, X_dirty, ratio = 0.15):
+        """Fit detector.
+        
+        Parameters
+        ----------
+        X_clean : numpy array of shape (n_samples, )
+            The input training samples.
+        X_dirty : numpy array of shape (n_samples, )
+            The input testing samples.
+        ratio : flaot, ([0,1])
+            The ratio for the train validation split
+        
+        Returns
+        -------
+        self : object
+            Fitted estimator.
+        """
 
         slidingwindow = self.slidingwindow
         predict_time_steps = self.predict_time_steps
@@ -65,81 +102,30 @@ class lstm:
     
 
     
-    def decision_function(self, X= False, measure = None):
+    def decision_function(self, measure = None):
         """Derive the decision score based on the given distance measure
+        
         Parameters
         ----------
-        X : numpy array of shape (n_samples, )
-            The input samples.
         measure : object
             object for given distance measure with methods to derive the score
+        
         Returns
         -------
         self : object
             Fitted estimator.
         """
-        if type(X) != bool:
-            self.X_train_ = X
-        n_test_ = self.n_test_
+       
         Y_test = self.Y
 
-        score = np.zeros(n_test_)
+        score = np.zeros(self.n_test_)
         estimation = self.estimation
 
         for i in range(estimation.shape[0]):
-            score[i - estimation.shape[0]] = measure.measure(Y_test[i], estimation[i], n_test_ - estimation.shape[0] + i)
+            score[i - estimation.shape[0]] = measure.measure(Y_test[i], estimation[i], self.n_test_ - estimation.shape[0] + i)
 
         score[0: - estimation.shape[0]] = score[- estimation.shape[0]]
         
         self.decision_scores_ = score
         return self
 
-    def predict_proba(self, X, method='linear', measure = None):
-        """Predict the probability of a sample being outlier. Two approaches
-        are possible:
-        1. simply use Min-max conversion to linearly transform the outlier
-           scores into the range of [0,1]. The model must be
-           fitted first.
-        2. use unifying scores, see :cite:`kriegel2011interpreting`.
-        Parameters
-        ----------
-        X : numpy array of shape (n_samples, n_features)
-            The input samples.
-        method : str, optional (default='linear')
-            probability conversion method. It must be one of
-            'linear' or 'unify'.
-        Returns
-        -------
-        outlier_probability : numpy array of shape (n_samples,)
-            For each observation, tells whether or not
-            it should be considered as an outlier according to the
-            fitted model. Return the outlier probability, ranging
-            in [0,1].
-        """
-
-        check_is_fitted(self, ['decision_scores_', 'threshold_', 'labels_'])
-        train_scores = self.decision_scores_
-
-        self.fit(X)
-        self.decision_function(measure = measure)
-        test_scores = self.decision_scores_
-
-        probs = np.zeros([X.shape[0], int(self._classes)])
-        if method == 'linear':
-            scaler = MinMaxScaler().fit(train_scores.reshape(-1, 1))
-            probs[:, 1] = scaler.transform(
-                test_scores.reshape(-1, 1)).ravel().clip(0, 1)
-            probs[:, 0] = 1 - probs[:, 1]
-            return probs
-
-        elif method == 'unify':
-            # turn output into probability
-            pre_erf_score = (test_scores - self._mu) / (
-                    self._sigma * np.sqrt(2))
-            erf_score = math.erf(pre_erf_score)
-            probs[:, 1] = erf_score.clip(0, 1).ravel()
-            probs[:, 0] = 1 - probs[:, 1]
-            return probs
-        else:
-            raise ValueError(method,
-                             'is not a valid probability conversion method')

@@ -1,0 +1,7 @@
+sphinx==5.0.2
+myst-parser==0.18.0
+sphinx_rtd_theme==1.0.0
+sphinx_rtd_dark_mode==1.2.4
+sphinx-copybutton==0.5.2
+numpy==1.24.3
+sphinx_math_dollar

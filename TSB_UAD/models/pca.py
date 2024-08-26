@@ -16,28 +16,12 @@ from ..utils.utility import standardizer
 
 
 class PCA(DetectorB):
-    """Principal component analysis (PCA) can be used in detecting outliers.
-    PCA is a linear dimensionality reduction using Singular Value Decomposition
-    of the data to project it to a lower dimensional space.
-    In this procedure, covariance matrix of the data can be decomposed to
-    orthogonal vectors, called eigenvectors, associated with eigenvalues. The
-    eigenvectors with high eigenvalues capture most of the variance in the
-    data.
-    Therefore, a low dimensional hyperplane constructed by k eigenvectors can
-    capture most of the variance in the data. However, outliers are different
-    from normal data points, which is more obvious on the hyperplane
-    constructed by the eigenvectors with small eigenvalues.
-    Therefore, outlier scores can be obtained as the sum of the projected
-    distance of a sample on all eigenvectors.
-    See :cite:`shyu2003novel,aggarwal2015outlier` for details.
-    Score(X) = Sum of weighted euclidean distance between each sample to the
-    hyperplane constructed by the selected eigenvectors
+    """PCA class modifed over from PYOD package
+
     Parameters
     ----------
     n_components : int, float, None or string
-        Number of components to keep.
-        if n_components is not set all components are kept::
-            n_components == min(n_samples, n_features)
+        Number of components to keep. if n_components is not set all components are kept.
         if n_components == 'mle' and svd_solver == 'full', Minka\'s MLE is used
         to guess the dimension
         if ``0 < n_components < 1`` and svd_solver == 'full', select the number
@@ -66,22 +50,13 @@ class PCA(DetectorB):
         improve the predictive accuracy of the downstream estimators by
         making their data respect some hard-wired assumptions.
     svd_solver : string {'auto', 'full', 'arpack', 'randomized'}
-        auto :
-            the solver is selected by a default policy based on `X.shape` and
-            `n_components`: if the input data is larger than 500x500 and the
-            number of components to extract is lower than 80% of the smallest
-            dimension of the data, then the more efficient 'randomized'
-            method is enabled. Otherwise the exact full SVD is computed and
-            optionally truncated afterwards.
-        full :
-            run exact full SVD calling the standard LAPACK solver via
-            `scipy.linalg.svd` and select the components by postprocessing
-        arpack :
-            run SVD truncated to n_components calling ARPACK solver via
-            `scipy.sparse.linalg.svds`. It requires strictly
-            0 < n_components < X.shape[1]
-        randomized :
-            run randomized SVD by the method of Halko et al.
+        Singular Value Decompositon solver.
+
+            - if auto, the solver is selected by a default policy based on `X.shape` and `n_components`. if the input data is larger than 500x500 and the number of components to extract is lower than 80% of the smallest dimension of the data, then the more efficient 'randomized' method is enabled. Otherwise the exact full SVD is computed and optionally truncated afterwards.
+            - if full run exact full SVD calling the standard LAPACK solver via `scipy.linalg.svd` and select the components by postprocessing
+            - if arpack run SVD truncated to n_components calling ARPACK solver via `scipy.sparse.linalg.svds`. It requires strictly 0 < n_components < X.shape[1]
+            - if randomized, run randomized SVD by the method of Halko et al.
+
     tol : float >= 0, optional (default .0)
         Tolerance for singular values computed by svd_solver == 'arpack'.
     iterated_power : int >= 0, or 'auto', (default 'auto')
@@ -100,8 +75,13 @@ class PCA(DetectorB):
         If True, perform standardization first to convert
         data to zero mean and unit variance.
         See http://scikit-learn.org/stable/auto_examples/preprocessing/plot_scaling_importance.html
+    
     Attributes
     ----------
+    decision_scores_ : numpy array of shape (n_samples,)
+        The outlier scores of the training data.
+        The higher, the more abnormal. Outliers tend to have higher
+        scores. This value is available once the detector is fitted.
     components_ : array, shape (n_components, n_features)
         Principal axes in feature space, representing the directions of
         maximum variance in the data. The components are sorted by
@@ -134,10 +114,6 @@ class PCA(DetectorB):
         computed the estimated data covariance and score samples.
         Equal to the average of (min(n_features, n_samples) - n_components)
         smallest eigenvalues of the covariance matrix of X.
-    decision_scores_ : numpy array of shape (n_samples,)
-        The outlier scores of the training data.
-        The higher, the more abnormal. Outliers tend to have higher
-        scores. This value is available once the detector is fitted.
     threshold_ : float
         The threshold is based on ``contamination``. It is the
         ``n_samples * contamination`` most abnormal samples in
@@ -170,12 +146,14 @@ class PCA(DetectorB):
     # noinspection PyIncorrectDocstring
     def fit(self, X, y=None):
         """Fit detector. y is ignored in unsupervised methods.
+        
         Parameters
         ----------
         X : numpy array of shape (n_samples, n_features)
-            The input samples.
+            The input samples (time series length). n_features corresponds to the subsequence length.
         y : Ignored
             Not used, present for API consistency by convention.
+        
         Returns
         -------
         self : object
@@ -243,11 +221,13 @@ class PCA(DetectorB):
         The anomaly score of an input sample is computed based on different
         detector algorithms. For consistency, outliers are assigned with
         larger anomaly scores.
+        
         Parameters
         ----------
         X : numpy array of shape (n_samples, n_features)
             The training input samples. Sparse matrices are accepted only
             if they are supported by the base estimator.
+        
         Returns
         -------
         anomaly_scores : numpy array of shape (n_samples,)
@@ -269,6 +249,8 @@ class PCA(DetectorB):
         Equal to n_components largest eigenvalues
         of the covariance matrix of X.
         Decorator for scikit-learn PCA attributes.
+
+        :meta private:
         """
         return self.detector_.explained_variance_
 
@@ -278,6 +260,8 @@ class PCA(DetectorB):
         If ``n_components`` is not set then all components are stored and the
         sum of explained variances is equal to 1.0.
         Decorator for scikit-learn PCA attributes.
+
+        :meta private:
         """
         return self.detector_.explained_variance_ratio_
 
@@ -287,6 +271,8 @@ class PCA(DetectorB):
         components. The singular values are equal to the 2-norms of the
         ``n_components`` variables in the lower-dimensional space.
         Decorator for scikit-learn PCA attributes.
+
+        :meta private:
         """
         return self.detector_.singular_values_
 
@@ -294,6 +280,8 @@ class PCA(DetectorB):
     def mean_(self):
         """Per-feature empirical mean, estimated from the training set.
         Decorator for scikit-learn PCA attributes.
+
+        :meta private:
         """
         return self.detector_.mean_
 
@@ -307,5 +295,7 @@ class PCA(DetectorB):
         Equal to the average of (min(n_features, n_samples) - n_components)
         smallest eigenvalues of the covariance matrix of X.
         Decorator for scikit-learn PCA attributes.
+
+        :meta private:
         """
         return self.detector_.noise_variance_

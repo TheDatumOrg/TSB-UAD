@@ -1,0 +1,41 @@
+cff-version: 1.0.1
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Paparrizos
+    given-names: John
+  - family-names: Kang
+    given-names: Yuhao
+  - family-names: Boniol
+    given-names: Paul
+  - family-names: Tsay
+    given-names: Ruey 
+  - family-names: Palpanas
+    given-names: Themis
+  - family-names: Franklin
+    given-names: Michael
+title: "TSB-UAD: An End-to-End Benchmark Suite for Univariate Time-Series Anomaly Detection"
+date-released: 2022
+url: "https://github.com/TheDatumOrg/TSB-UAD/tree/tutorial"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Paparrizos
+      given-names: John
+    - family-names: Kang
+      given-names: Yuhao
+    - family-names: Boniol
+      given-names: Paul
+    - family-names: Tsay
+      given-names: Ruey 
+    - family-names: Palpanas
+      given-names: Themis
+    - family-names: Franklin
+      given-names: Michael
+  doi: 10.14778/3529337.3529354
+  journal: "Proceedings of the VLDB Endowment (PVLDB)"
+  title: "TSB-UAD: An End-to-End Benchmark Suite for Univariate Time-Series Anomaly Detection"
+  issue: 8
+  volume: 15
+  year: 2022
+  start: 1697
+  end: 1711

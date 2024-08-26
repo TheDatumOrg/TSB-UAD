@@ -6,10 +6,10 @@ from collections import defaultdict
 
 from ..utils.utility import _get_sklearn_version
 
-if _get_sklearn_version() > 20:
-    from inspect import signature
-else:
-    from sklearn.externals.funcsigs import signature
+#if _get_sklearn_version() > 20:
+from inspect import signature
+#else:
+#    from sklearn.externals.funcsigs import signature
 
 import abc
 import six
