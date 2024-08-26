@@ -4,7 +4,10 @@
 
 <h1 align="center">TSB-UAD</h1>
 <h2 align="center">An End-to-End Benchmark Suite for Univariate Time-Series Anomaly Detection</h2>
-
+<p>
+<img alt="PyPI - Downloads" src="https://pepy.tech/badge/tsb_uad"> <img alt="PyPI" src="https://img.shields.io/pypi/v/tsb-uad"> <img alt="License" src="https://img.shields.io/github/license/TheDatumOrg/tsb-uad"> <img alt="GitHub issues" src="https://img.shields.io/github/issues/TheDatumOrg/tsb-uad"> <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/tsb-uad"> <img alt="ReadTheDocs Status" src="https://readthedocs.org/projects/tsb-uad/badge/?version=latest"> 
+</p>
+</div>
 
 TSB-UAD is a new open, end-to-end benchmark suite to ease the
 evaluation of univariate time-series anomaly detection methods. Overall, TSB-UAD
@@ -20,6 +23,15 @@ classification datasets into time series with labeled anomalies. In
 addition, we present a set of data transformations with which we
 introduce new anomalies in the public datasets, resulting in 10828
 time series (92 datasets) with varying difficulty for anomaly detection.
+
+## Quick start
+
+You can install TSB-UAD with pip (please read the installation section for more details).
+
+```
+pip install tsb-uad
+```
+
 
 If you use TSB-UAD in your project or research, cite the following two papers:
 
