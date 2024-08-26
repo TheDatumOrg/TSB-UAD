@@ -128,7 +128,7 @@ pip install -r requirements.txt
 
 5. Install TSB-UAD:
 
-You can install TSB-kit with pip.
+You can install TSB-UAD with pip.
 
 ```
 pip install TSB-UAD
