@@ -6,7 +6,7 @@
 Long Short-Term Memory (LSTM) [Hochreiter and Schmidhuber 1997] network has been demonstrated to be particularly efficient in learning inner features for sub-sequences classification or time series forecasting. Such a model can also be used for anomaly detection purposes [Filonov et al. 2016, Malhotra et al. 2015]. 
 The two latter papers' principle is as follows: A stacked LSTM model is trained on *normal* parts of the data. The objective is to predict the following point or the subsequence using the previous ones. Consequently, the model will be trained to forecast a healthy state of the time series, and, therefore, will fail to forecast when it will encounter an anomaly.  
 
-The implementation of TSB-kit corresponds to LSTM-AD [Malhotra et al. 2015].
+The implementation of TSB-UAD corresponds to LSTM-AD [Malhotra et al. 2015].
 
 ```{eval-rst}  
 .. autoclass:: TSB_UAD.models.lstm.lstm

@@ -1,6 +1,6 @@
 # Preprocessing Time Series
 
-Even though all methods proposed in TSB-kit work for time series anomaly detection, not all methods require the same input shape. Some (like SAND and MatrixProfile) require the time series as a NumPy array of shape (n\_samples,) with n\_samples being the number of points in the time series, some others (like LOF or IForest) require a NumPy array of shape (n\_samples-length,m) corresponding to all consecutive subsequences of length m in the time series. Consequently, we provide code snippets below to show how to preprocess the time series.
+Even though all methods proposed in TSB-UAD work for time series anomaly detection, not all methods require the same input shape. Some (like SAND and MatrixProfile) require the time series as a NumPy array of shape (n\_samples,) with n\_samples being the number of points in the time series, some others (like LOF or IForest) require a NumPy array of shape (n\_samples-length,m) corresponding to all consecutive subsequences of length m in the time series. Consequently, we provide code snippets below to show how to preprocess the time series.
 
 
 ## Reading the time series
@@ -46,7 +46,7 @@ For the specific case of subsequence anomaly detection, most methods require a s
 
 In some use cases, the user knows exactly what length to use (e.g., special interest in abnormal days or hours in an electricity consumption time series). However, in many applications, such length might be difficult to guess in advance. 
 
-In TSB-kit, we provide a function to automatically compute an "optimal" subsequence length. This function computes the optimal lag that maximizes auto-correlation and returns it. 
+In TSB-UAD, we provide a function to automatically compute an "optimal" subsequence length. This function computes the optimal lag that maximizes auto-correlation and returns it. 
 
 ### Example
 

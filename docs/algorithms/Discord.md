@@ -7,7 +7,7 @@ Matrix Profile [Yeh et al. 2016, Zhu et al. 2016] is a discord-based method that
 
 The MatrixProfile is computed using Mueen’s ultra-fast Algorithm for Similarity Search (MASS) [Mueen et al. 2017] that requires just O(nlog(n)) time by exploiting the Fast Fourier Transform (FFT) to calculate the dot products between the query and all the sub-sequences of the time series. Once these metadata are generated, retrieving the Top-k discord is possible by considering the maximum value of the Matrix Profile and ordering it, excluding the trivial matches (overlapping sub-sequences). Retrieving the sub-sequences with the shortest distance to their nearest neighbor (called motifs) is also possible. These sub-sequences correspond to a recurrent motif in the time series and can be useful in the anomaly search. 
 
-The TSB-kit implementation of MatrixProfile is wrapper of [Stumpy](https://stumpy.readthedocs.io/en/latest/index.html) implementation.
+The TSB-UAD implementation of MatrixProfile is wrapper of [Stumpy](https://stumpy.readthedocs.io/en/latest/index.html) implementation.
 
 ```{eval-rst}  
 .. autoclass:: TSB_UAD.models.matrix_profile.MatrixProfile
@@ -87,8 +87,8 @@ Affiliation_Recall : 0.9720951147963328
 
 DAMP [Lu et al. 2022] is a discord-based method, and scalable matrix Profile-based approach proposed to solves the problem of multiple similar anomalies. Moreover, is able to work on online settings, and scale to fast-arriving streams. 
 
-The TSB-kit implementation of the DAMP algorithm follows the descripition in the original paper [Lu et al. 2022](https://www.cs.ucr.edu/~eamonn/DAMP_long_version.pdf).
-The TSB-kit implementation is adapted from [TimeEval](https://github.com/HPI-Information-Systems/TimeEval-algorithms/blob/main/damp/damp/damp.py).
+The TSB-UAD implementation of the DAMP algorithm follows the descripition in the original paper [Lu et al. 2022](https://www.cs.ucr.edu/~eamonn/DAMP_long_version.pdf).
+The TSB-UAD implementation is adapted from [TimeEval](https://github.com/HPI-Information-Systems/TimeEval-algorithms/blob/main/damp/damp/damp.py).
 
 
 ```{eval-rst}  

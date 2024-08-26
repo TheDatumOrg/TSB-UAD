@@ -43,7 +43,7 @@ autodoc_mock_imports = ['joblib','six','matplotlib','pandas','arch','tsfresh'
 
 html_theme = 'sphinx_rtd_theme'
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-html_logo = '../doc/logo_TSB.png'
+html_logo = '../assets/logo_TSB.png'
 
 # -- Napolean settings -------------------------------------------------------
 napoleon_google_docstring = False

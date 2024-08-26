@@ -6,7 +6,7 @@
 The first encoding-based approach is to encode and represent the time series with its principal components. Principal Components Analysis (PCA) investigates the major components of the time series that contribute the most to the covariance structure. The anomaly score is measured by the sub-sequences distance from 0 along the principal components weighted by their eigenvalues. Please see [Aggarwal 2015] for mre details.
 
 
-The TSB-kit implementation of PCA is adapted from [PyOD implementation](https://pyod.readthedocs.io/en/latest/) [Zhao et al. 2019].
+The TSB-UAD implementation of PCA is adapted from [PyOD implementation](https://pyod.readthedocs.io/en/latest/) [Zhao et al. 2019].
 
 ```{eval-rst}  
 .. autoclass:: TSB_UAD.models.pca.PCA

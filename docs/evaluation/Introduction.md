@@ -1,6 +1,6 @@
 # Introduction
 
-We define here the evaluation measures used in TSB-kit.
+We define here the evaluation measures used in TSB-UAD.
 We first introduce formal notations. Then, we review in detail previously proposed evaluation measures for time-series anomaly detection methods. 
 We review notations for the time series and anomaly score sequence.
 

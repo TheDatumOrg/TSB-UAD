@@ -65,7 +65,7 @@ for metric in results.keys():
 
 One-Class Support Vector Machine (OCSVM) is a typical distribution-based example, which aims to separate the instances from an origin and maximize the distance from the hyperplane separation [Schölkopf et al. 1999] or spherical separation [Tax and Duin 2004]. The anomalies are identified with points of high decision score, i.e., far away from the separation hyper-plane. This method is a variant of the classical Support Vector Machine for classification tasks [Hearst et al. 1998].
 
-The TSB-kit implementation of OCSVM is a wrapper of [Scikit-learn implementation of OneClassSVM](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html).
+The TSB-UAD implementation of OCSVM is a wrapper of [Scikit-learn implementation of OneClassSVM](https://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html).
 
 
 ```{eval-rst}  

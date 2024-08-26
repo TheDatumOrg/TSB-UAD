@@ -1,4 +1,4 @@
-![icons](../../assets/method_icons/Clustering.png "icons")
+![icons](../../assets/method_icons/clustering.png "icons")
 # Clustering-based methods
 
 ## NormA

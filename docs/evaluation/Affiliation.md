@@ -1,6 +1,6 @@
 # In practice
 
-In TSB-kit, we provide a unique fonction to retrieve all evaluation measures.
+In TSB-UAD, we provide a unique fonction to retrieve all evaluation measures.
 
 ```{eval-rst}  
 .. autoclass:: TSB_UAD.vus.metrics.get_metrics

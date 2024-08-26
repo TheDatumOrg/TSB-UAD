@@ -2,7 +2,7 @@
 
 Recent advances in data collection technology, accompanied by the ever-rising volume and velocity of streaming data, underscore the vital need for time-series analytics. In this regard, time-series anomaly detection has been an important task, entailing various applications in fields such as cyber security, financial markets, and health care. While traditional literature on anomaly detection is centered on statistical measures, the increasing number of machine learning algorithms in recent years call for a structured, general characterization of the research methods for time-series anomaly detection. 
 
-The objective of TSB-kit is to provide simple and easy implementations of the main methods proposed in the literature. To do so, we propose a novel process-centric taxonomy in the context of time series and select representatives for each category.
+The objective of TSB-UAD is to provide simple and easy implementations of the main methods proposed in the literature. To do so, we propose a novel process-centric taxonomy in the context of time series and select representatives for each category.
 
 ## On the Definition of Anomalies in Time Series
 
@@ -21,7 +21,7 @@ Formally, we define three types of time series anomalies: point, contextual, and
 Another characteristic of time-series anomalies comes from the dimensionality of the data. Univariate time series consists of an ordered sequence of real values on a single dimension, and the anomalies are detected based on one single dimension (or feature). 
 On the other hand, Multivariate time series is either a set of ordered sequences of real values (with each ordered sequence having the same length) or an ordered sequence of vectors composed of real values. 
 
-In TSB-kit, we only focus on univariate time series anoamly deteciton.
+In TSB-UAD, we only focus on univariate time series anoamly deteciton.
 
 ## Detecting Anomalies in Time Series: a Generic Pipeline
 
@@ -29,4 +29,4 @@ The various different algorithms proposed for anomaly detection in time series u
 
 ![Anomaly detection pipeline](../../assets/pipeline.png "Anomaly detection pipeline")
 
-We provide with TSB-kit functions to preprocess the time seires, to run the methods, compute their anoamly scores, and to post-process them.
+We provide with TSB-UAD functions to preprocess the time seires, to run the methods, compute their anoamly scores, and to post-process them.

@@ -8,7 +8,7 @@ Isolation Forest (IForest) is a density-based and the most famous tree-based app
 The key idea remains on the fact that, in a normal distribution, anomalies are more likely to be isolated (i.e., requiring fewer random partitions to be isolated) than normal instances. 
 If we assume the latter statement, we only have to produce a partitioning process that indicates well the isolation degree (i.e., anomalous degree) of instances.
 
-The TSB-kit implementation of IForest is a wrapper of [Scikit-learn implementation of IsolationForest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html).
+The TSB-UAD implementation of IForest is a wrapper of [Scikit-learn implementation of IsolationForest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html).
 
 ```{eval-rst}  
 .. autoclass:: TSB_UAD.models.iforest.IForest

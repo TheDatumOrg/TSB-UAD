@@ -7,7 +7,7 @@ Autoencoder is a type of artificial neural network used to learn to reconstruct 
 
 The reconstruction error can be used as an anomalous score for the specific anomaly detection task. As the model is trained on the non-anomalous subsequence of the time series (or very few anomalous subsequence), it is optimized to reconstruct the normal subsequences. Therefore, all the subsequences far from the training set will have a bigger reconstruction error.
 
-As autoencoder has been a popular method in the recent decade, many anomaly detection algorithms are based on autoencoder algorithms' implementation. For TSB-kit autoencoder implementation, we use a simple encoder with two consecutive dense layers (32 and 16 neurons respectivelly) for the encoder and the decoder.
+As autoencoder has been a popular method in the recent decade, many anomaly detection algorithms are based on autoencoder algorithms' implementation. For TSB-UAD autoencoder implementation, we use a simple encoder with two consecutive dense layers (32 and 16 neurons respectivelly) for the encoder and the decoder.
 
 ```{eval-rst}  
 .. autoclass:: TSB_UAD.models.AE.AE_MLP2
