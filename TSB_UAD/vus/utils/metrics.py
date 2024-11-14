@@ -394,7 +394,7 @@ class metricor:
         tp = np.zeros(thre)
         N_pred = np.zeros(thre)
 
-        for k,i in enumerate(np.linspace(0, len(score)-1, thre).astype(int)):
+        for k, i in enumerate(np.linspace(0, len(score)-1, thre).astype(int)):
             threshold = score_sorted[i]
             pred = score>= threshold
             N_pred[k]=np.sum(pred)
@@ -548,3 +548,87 @@ class metricor:
             ap_3d[window]=(AP_range)
 
         return tpr_3d, fpr_3d, prec_3d, window_3d, sum(auc_3d)/len(window_3d), sum(ap_3d)/len(window_3d)
+    
+
+    def RangeAUC_volume_opt_time(self, labels_original, score, windowSize, thre=250):
+        window_3d = np.arange(0, windowSize+1, 1)
+        P = np.sum(labels_original)
+        seq = self.range_convers_new(labels_original)
+        l = self.new_sequence(labels_original, seq, windowSize)
+
+        score_sorted = -np.sort(-score)
+
+        tpr_3d=np.zeros((windowSize+1,thre+2))
+        fpr_3d=np.zeros((windowSize+1,thre+2))
+        prec_3d=np.zeros((windowSize+1,thre+1))
+
+        auc_3d=np.zeros(windowSize+1)
+        ap_3d=np.zeros(windowSize+1)
+
+        tp = np.zeros(thre)
+        N_pred = np.zeros(thre)
+        p = np.zeros((thre,len(score)))
+        tmp = np.linspace(0, len(score)-1, thre).astype(int)
+
+        for k, i in enumerate(tmp):
+            threshold = score_sorted[i]
+            pred = score>= threshold
+            p[k]=pred
+            N_pred[k]=np.sum(pred)
+
+        for window in window_3d:
+
+            labels = self.sequencing(labels_original, seq, window)
+            L = self.new_sequence(labels, seq, window)
+
+            TF_list = np.zeros((thre+2,2))
+            Precision_list = np.ones(thre+1)
+            j=0
+            N_labels = 0
+
+            for seg in l:
+                N_labels += np.sum(labels[seg[0]:seg[1]+1])
+
+            TF_list, Precision_list, j = vectorized(tmp, score_sorted, score, l, labels, j, tp, N_pred, L, P, N_labels, TF_list, Precision_list)
+
+            TF_list[j+1]=[1,1]
+            
+
+            tpr_3d[window]=TF_list[:,0]
+            fpr_3d[window]=TF_list[:,1]
+            prec_3d[window]=Precision_list
+            
+            width = TF_list[1:,1] - TF_list[:-1,1]
+            height = (TF_list[1:,0] + TF_list[:-1,0])/2
+            AUC_range = np.dot(width,height)
+            auc_3d[window]=(AUC_range)
+            
+            width_PR = TF_list[1:-1,0] - TF_list[:-2,0]
+            height_PR = (Precision_list[1:] + Precision_list[:-1])/2
+            AP_range = np.dot(width_PR,height_PR)
+            ap_3d[window]=(AP_range)
+
+        return tpr_3d, fpr_3d, prec_3d, window_3d, sum(auc_3d)/len(window_3d), sum(ap_3d)/len(window_3d)
+
+
+def vectorized(tmp, score_sorted, score, l, labels, j, tp, N_pred, L, P, N_labels, TF_list, Precision_list):
+    thresholds = score_sorted[tmp]
+    pred = score[:, None] >= thresholds
+    
+    TP = np.sum([np.dot(labels[seg[0]:seg[1]+1], pred[seg[0]:seg[1]+1, :]) for seg in l], axis=0) + tp[j:j+len(tmp)]
+    FP = N_pred[j:j+len(tmp)] - TP
+    
+    existence = np.sum([np.any(np.dot(labels[seg[0]:seg[1]+1], pred[seg[0]:seg[1]+1, :]), axis=0) for seg in L], axis=0)
+    existence_ratio = existence / len(L)
+    
+    P_new = (P + N_labels) / 2
+    recall = np.minimum(TP / P_new, 1)
+    TPR = recall * existence_ratio
+    N_new = len(labels) - P_new
+    FPR = FP / N_new
+    Precision = TP / N_pred[j:j+len(tmp)]
+    
+    TF_list[j+1:j+len(tmp)+1] = np.column_stack((TPR, FPR))
+    Precision_list[j+1:j+len(tmp)+1] = Precision
+    
+    return TF_list, Precision_list, j + len(tmp)
