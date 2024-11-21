@@ -26,6 +26,10 @@ time series (92 datasets) with varying difficulty for anomaly detection.
 
 ## Quick start
 
+Related Repository:
+- [TSB-AD](https://github.com/TheDatumOrg/TSB-AD): Towards A Reliable Time-Series Anomaly Detection Benchmark.
+- [VUS](https://github.com/TheDatumOrg/VUS): A New Accuracy Evaluation Measure for Time-Series Anomaly Detection.
+
 You can install TSB-UAD with pip (please read the installation section for more details).
 
 ```
@@ -33,10 +37,11 @@ pip install tsb-uad
 ```
 
 
-If you use TSB-UAD in your project or research, cite the following two papers:
+If you use TSB-UAD in your project or research, cite the following papers:
 
 * [VLDB 2022a](https://www.paparrizos.org/papers/PaparrizosVLDB22a.pdf)
 * [VLDB 2022b](https://www.paparrizos.org/papers/PaparrizosVLDB22b.pdf)
+* [NeurIPS 2024](https://openreview.net/pdf?id=R6kJtWsTGy)
 
 ### References
 
@@ -75,6 +80,20 @@ If you use TSB-UAD in your project or research, cite the following two papers:
 
 ```
 
+> "The Elephant in the Room: Towards A Reliable Time-Series Anomaly Detection Benchmark"<br/>
+> Qinghua Liu and John Paparrizos<br/>
+> NeurIPS 2024<br/>
+
+```bibtex
+@inproceedings{liu2024elephant,
+  title={The Elephant in the Room: Towards A Reliable Time-Series Anomaly Detection Benchmark},
+  author={Liu, Qinghua and Paparrizos, John},
+  booktitle={NeurIPS 2024},
+  year={2024}
+}
+
+```
+
 
 ## Contributors
 
@@ -105,7 +124,9 @@ The following tools are required to install TSB-UAD from source:
 
 - Artificial: https://www.thedatum.org/datasets/TSB-UAD-Artificial.zip
 
-- - The UCR classification datasets used to generate the Artificial datasets: https://www.thedatum.org/datasets/UCR2022_DATASETS.zip
+  - The UCR classification datasets used to generate the Artificial datasets: https://www.thedatum.org/datasets/UCR2022_DATASETS.zip
+
+❗️Exciting Update: Public v2 is now available, featuring 29 datasets and 3,427 time series! Download it here: https://www.thedatum.org/datasets/TSB-UAD-Public-v2.zip
 
 2. Clone this repository using git and change into its root directory.
 
