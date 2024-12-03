@@ -2,7 +2,7 @@
 
 import numpy as np
 from scipy import signal
-from ..utils.metrics import metricor
+from ..vus.utils.metrics import metricor
 
 
 def plotdata(data,label, ax, title=None, max_len=2000):

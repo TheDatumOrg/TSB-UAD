@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
-__version__ = "0.0.1"
+__version__ = "0.0.3"
 
 CLASSIFIERS = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: Apache Software License",
     "Natural Language :: English",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
@@ -28,7 +28,7 @@ setup(
     author_email="john@paparrizos.org",
     packages=find_packages(),
     zip_safe=True,
-    license="",
+    license="Apache-2.0 license",
     url="https://github.com/TheDatumOrg/TSB-UAD",
     entry_points={},
     install_requires=[
